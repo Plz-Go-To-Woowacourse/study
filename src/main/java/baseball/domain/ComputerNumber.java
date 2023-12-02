@@ -1,23 +1,25 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.utils.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constants.DomainConstants.*;
+import static baseball.constants.DomainConstants.MAX_SIZE;
 
 public class ComputerNumber {
     private final List<Integer> computerNumber;
+    private final NumberGenerator numberGenerator;
 
-    public ComputerNumber() {
+    public ComputerNumber(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
         this.computerNumber = createRandomNumbers();
     }
 
     private List<Integer> createRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < MAX_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
+            int randomNumber = numberGenerator.generate();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
