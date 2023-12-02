@@ -7,12 +7,16 @@ public class OutputView {
         System.out.println(OutputMessage.START.getText());
     }
 
-    public void printNumberInput() {
-        System.out.print(OutputMessage.NUMBER_INPUT.getText());
+    public void printGameEnd() {
+        System.out.println(OutputMessage.END.getText());
     }
 
-    public void printErrorMessage(String errorMessage) {
-        System.out.println(errorMessage);
+    public void printRetry() {
+        System.out.println(OutputMessage.RETRY.getText());
+    }
+
+    public void printNumberInput() {
+        System.out.print(OutputMessage.NUMBER_INPUT.getText());
     }
 
     public void printBallCount(int ball) {
@@ -20,10 +24,18 @@ public class OutputView {
     }
 
     public void printStrikeCount(int strike) {
-        System.out.printf(OutputMessage.STRIKE.getText() + "%n", strike);
+        System.out.printf(OutputMessage.STRIKE.getText(), strike);
     }
 
     public void printNotMatch() {
-        System.out.println(OutputMessage.NOT_MATCH.getText());
+        System.out.print(OutputMessage.NOT_MATCH.getText());
+    }
+
+    public void printBlankLine() {
+        System.out.println();
+    }
+
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
     }
 }

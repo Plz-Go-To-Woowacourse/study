@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BaseballNumbers;
+import baseball.domain.Judgment;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.InvalidNumberException;
 import baseball.exception.InvalidNumberSizeException;
@@ -18,10 +19,22 @@ public class BaseBall {
     }
 
     public void play() {
-        outputView.printGameStart();
+        startBaseBall();
+    }
 
+    private void startBaseBall() {
+        outputView.printGameStart();
         BaseballNumbers computerNumbers = createComputerNumbers();
-        judgeBaseballNumbers(computerNumbers);
+
+        while (true) {
+            Judgment judgment = judgeBaseballNumbers(computerNumbers);
+            judgment.showJudgment(outputView);
+
+            if (judgment.isUserWin()) {
+                outputView.printGameEnd();
+                break;
+            }
+        }
     }
 
     private BaseballNumbers createComputerNumbers() {
@@ -41,26 +54,12 @@ public class BaseBall {
         }
     }
 
-    private void judgeBaseballNumbers(BaseballNumbers computerNumbers) {
+    private Judgment judgeBaseballNumbers(BaseballNumbers computerNumbers) {
         BaseballNumbers userNumbers = inputBaseballNumber();
 
         int ball = userNumbers.countBall(computerNumbers);
         int strike = userNumbers.countStrike(computerNumbers);
 
-        showJudgment(ball, strike);
-    }
-
-    private void showJudgment(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
-            outputView.printNotMatch();
-            return;
-        }
-
-        if (ball > 0) {
-            outputView.printBallCount(ball);
-        }
-        if (strike > 0) {
-            outputView.printStrikeCount(strike);
-        }
+        return new Judgment(ball, strike);
     }
 }
