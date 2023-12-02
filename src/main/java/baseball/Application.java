@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.constants.OutputMessage;
+import baseball.constants.Rule;
 import baseball.controller.BaseBall;
 import baseball.utils.Validator;
 import baseball.view.InputView;

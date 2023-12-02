@@ -4,10 +4,9 @@ import baseball.domain.BaseballNumbers;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.InvalidNumberException;
 import baseball.exception.InvalidNumberSizeException;
+import baseball.utils.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-
-import java.util.List;
 
 public class BaseBall {
     private final OutputView outputView;
@@ -19,7 +18,7 @@ public class BaseBall {
     }
 
     private BaseballNumbers inputBaseballNumber() {
-        while (true){
+        while (true) {
             try {
                 outputView.printNumberInput();
                 return new BaseballNumbers(inputView.inputNumbers());
@@ -29,9 +28,16 @@ public class BaseBall {
         }
     }
 
+    private BaseballNumbers createComputerNumbers() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        return new BaseballNumbers(randomNumberGenerator.createRandomNumbers());
+    }
+
     public void play() {
         outputView.printGameStart();
 
-        BaseballNumbers baseballNumber = inputBaseballNumber();
+        BaseballNumbers computerNumbers = createComputerNumbers();
+        BaseballNumbers userNumbers = inputBaseballNumber();
     }
 }

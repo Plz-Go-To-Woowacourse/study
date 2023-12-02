@@ -4,6 +4,7 @@ import baseball.constants.ErrorMessage;
 import baseball.constants.Rule;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.InvalidNumberSizeException;
+import baseball.utils.RandomNumberGenerator;
 
 import java.util.HashSet;
 import java.util.List;
