@@ -23,6 +23,14 @@ public class MyNumber {
         if (hasBlank(number)) {
             throwException();
         }
+
+        if (!isNumeric(number)) {
+            throwException();
+        }
+    }
+
+    private Boolean isNumeric(String number) {
+        return number.matches("^[\\d]*$");
     }
 
     private Boolean hasBlank(String number) {
