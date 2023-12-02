@@ -32,7 +32,7 @@ class ResultTest {
     @DisplayName("볼을 정상적으로 확인하는지")
     @ParameterizedTest
     @ValueSource(strings = {"147", "164", "564"})
-    void testToString(String input) {
+    void confirmBall(String input) {
         // given
         final int[] numbers = {4,5,6};
         NumberGenerator numberGenerator = new TestNumberGenerator(numbers);
@@ -46,5 +46,24 @@ class ResultTest {
 
         // then
         assertThat(resultMessage).contains("볼");
+    }
+
+    @DisplayName("스트라이크을 정상적으로 확인하는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"432", "457", "456"})
+    void confirmStrike(String input) {
+        // given
+        final int[] numbers = {4,5,6};
+        NumberGenerator numberGenerator = new TestNumberGenerator(numbers);
+        ComputerNumber computerNumber = new ComputerNumber(numberGenerator);
+        MyNumber myNumber = new MyNumber(input);
+
+        Result result = new Result(myNumber, computerNumber);
+
+        // when
+        String resultMessage = result.toString();
+
+        // then
+        assertThat(resultMessage).contains("스트라이크");
     }
 }
