@@ -47,6 +47,15 @@ public class BaseBall {
         int ball = userNumbers.countBall(computerNumbers);
         int strike = userNumbers.countStrike(computerNumbers);
 
+        showJudgment(ball, strike);
+    }
+
+    private void showJudgment(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            outputView.printNotMatch();
+            return;
+        }
+
         if (ball > 0) {
             outputView.printBallCount(ball);
         }

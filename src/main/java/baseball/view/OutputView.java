@@ -22,4 +22,8 @@ public class OutputView {
     public void printStrikeCount(int strike) {
         System.out.printf(OutputMessage.STRIKE.getText() + "%n", strike);
     }
+
+    public void printNotMatch() {
+        System.out.println(OutputMessage.NOT_MATCH.getText());
+    }
 }
