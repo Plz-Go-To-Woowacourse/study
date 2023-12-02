@@ -33,7 +33,7 @@ public class BaseBallController {
                 outPutView.displayResultMessage(result);
             }
 
-            if (!askRestart()) {
+            if (askRestart()) {
                 break;
             }
         }
@@ -41,7 +41,7 @@ public class BaseBallController {
 
     private Boolean askRestart() {
         outPutView.restartMessage();
-        Integer restart = inputView.inputRestart();
+        String restart = inputView.inputNumber();
 
         return baseBallService.isValid(restart);
     }

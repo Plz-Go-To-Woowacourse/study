@@ -9,11 +9,11 @@ public class BaseBallService {
         return new Result(myNumber, computerNumber);
     }
 
-    public Boolean isValid(Integer restart) {
-        if (restart != 1 && restart != 2) {
+    public Boolean isValid(String restart) {
+        if (!restart.equals("1") && !restart.equals("2")) {
             throw new IllegalArgumentException();
         }
 
-        return restart != 2;
+        return restart.equals("2");
     }
 }
