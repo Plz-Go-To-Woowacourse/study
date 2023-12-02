@@ -1,8 +1,11 @@
 package baseball.controller;
 
+import baseball.domain.BaseballNumbers;
 import baseball.exception.InvalidNumberException;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import java.util.List;
 
 public class BaseBall {
     private final OutputView outputView;
@@ -13,10 +16,10 @@ public class BaseBall {
         this.inputView = inputView;
     }
 
-    private int[] inputBaseBallNumber() {
+    private BaseballNumbers inputBaseballNumber() {
         while (true){
             try {
-                return inputView.inputNumber();
+                return new BaseballNumbers(inputView.inputNumbers());
             } catch (InvalidNumberException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
@@ -27,6 +30,6 @@ public class BaseBall {
         outputView.printGameStart();
         outputView.printNumberInput();
 
-        int[] baseBallNumber = inputBaseBallNumber();
+        BaseballNumbers baseballNumber = inputBaseballNumber();
     }
 }

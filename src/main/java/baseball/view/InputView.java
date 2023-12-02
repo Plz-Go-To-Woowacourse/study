@@ -3,6 +3,9 @@ package baseball.view;
 import baseball.utils.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputView {
     private Validator validator;
 
@@ -10,15 +13,15 @@ public class InputView {
         this.validator = validator;
     }
 
-    public int[] inputNumber() {
+    public List<Integer> inputNumbers() {
         String input = inputValue();
 
         validator.validateNumber(input);
 
-        int[] numbers = new int[3];
+        List<Integer> numbers = new ArrayList<>();
 
         for (int index = 0; index < 3; index++) {
-            numbers[index] = (int)input.charAt(index);
+            numbers.add((int)input.charAt(index));
         }
 
         return numbers;
