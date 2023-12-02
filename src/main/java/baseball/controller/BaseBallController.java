@@ -19,20 +19,31 @@ public class BaseBallController {
     }
 
     public void run() {
-        ComputerNumber computerNumber = startGame();
-        Result result = null;
+        outPutView.startBaseBallMessage();
+        while (true) {
+            ComputerNumber computerNumber = startGame();
+            Result result = null;
 
-        while (result == null || !result.isGameOver()) {
-            MyNumber myNumber = getMyNumber();
+            while (result == null || !result.isGameOver()) {
+                MyNumber myNumber = getMyNumber();
+                result = baseBallService.compareNumbers(myNumber, computerNumber);
+                outPutView.displayResultMessage(result);
+            }
 
-            result = baseBallService.compareNumbers(myNumber, computerNumber);
-
-            outPutView.displayResultMessage(result);
+            if (!askRestart()) {
+                break;
+            }
         }
     }
 
+    private Boolean askRestart() {
+        outPutView.restartMessage();
+        Integer restart = inputView.inputRestart();
+
+        return baseBallService.isValid(restart);
+    }
+
     private ComputerNumber startGame() {
-        outPutView.startBaseBallMessage();
         return getComputerNumber();
     }
 
