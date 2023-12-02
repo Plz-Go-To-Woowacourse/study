@@ -14,6 +14,6 @@ public class BaseBallService {
             throw new IllegalArgumentException();
         }
 
-        return true;
+        return restart != 2;
     }
 }
