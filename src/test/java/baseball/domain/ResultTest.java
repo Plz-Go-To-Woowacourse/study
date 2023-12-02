@@ -4,6 +4,8 @@ import baseball.testObject.TestNumberGenerator;
 import baseball.utils.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,7 +29,22 @@ class ResultTest {
         assertThat(isGameOver).isEqualTo(true);
     }
 
-    @Test
-    void testToString() {
+    @DisplayName("볼을 정상적으로 확인하는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"147", "164", "564"})
+    void testToString(String input) {
+        // given
+        final int[] numbers = {4,5,6};
+        NumberGenerator numberGenerator = new TestNumberGenerator(numbers);
+        ComputerNumber computerNumber = new ComputerNumber(numberGenerator);
+        MyNumber myNumber = new MyNumber(input);
+
+        Result result = new Result(myNumber, computerNumber);
+
+        // when
+        String resultMessage = result.toString();
+
+        // then
+        assertThat(resultMessage).contains("볼");
     }
 }
