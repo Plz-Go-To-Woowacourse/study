@@ -21,7 +21,7 @@ public class InputView {
         List<Integer> numbers = new ArrayList<>();
 
         for (int index = 0; index < input.length(); index++) {
-            numbers.add((int)input.charAt(index));
+            numbers.add(Character.getNumericValue(input.charAt(index)));
         }
 
         return numbers;

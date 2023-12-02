@@ -17,6 +17,19 @@ public class BaseBall {
         this.inputView = inputView;
     }
 
+    public void play() {
+        outputView.printGameStart();
+
+        BaseballNumbers computerNumbers = createComputerNumbers();
+        BaseballNumbers userNumbers = inputBaseballNumber();
+    }
+
+    private BaseballNumbers createComputerNumbers() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        return new BaseballNumbers(randomNumberGenerator.createRandomNumbers());
+    }
+
     private BaseballNumbers inputBaseballNumber() {
         while (true) {
             try {
@@ -26,18 +39,5 @@ public class BaseBall {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
-    }
-
-    private BaseballNumbers createComputerNumbers() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-
-        return new BaseballNumbers(randomNumberGenerator.createRandomNumbers());
-    }
-
-    public void play() {
-        outputView.printGameStart();
-
-        BaseballNumbers computerNumbers = createComputerNumbers();
-        BaseballNumbers userNumbers = inputBaseballNumber();
     }
 }
