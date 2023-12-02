@@ -45,6 +45,17 @@ public class BaseballNumbers {
                 .count();
     }
 
+    public int countStrike(BaseballNumbers baseballNumbers) {
+        AtomicInteger index = new AtomicInteger(0);
+
+        return (int) numbers.stream()
+                .filter(number -> {
+                    int currentIndex = index.getAndIncrement();
+                    return baseballNumbers.isStrike(currentIndex, number);
+                })
+                .count();
+    }
+
     private boolean isBall(int currentIndex, int number) {
         int index = findNumberIndex(number);
 
@@ -53,10 +64,7 @@ public class BaseballNumbers {
     }
 
     private boolean isStrike(int currentIndex, int number) {
-        int index = findNumberIndex(number);
-
-        return index != Rule.NO_NUMBER.getValue()
-                && currentIndex == index;
+        return numbers.get(currentIndex) == number;
     }
 
     private int findNumberIndex(int number) {

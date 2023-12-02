@@ -21,7 +21,7 @@ public class BaseBall {
         outputView.printGameStart();
 
         BaseballNumbers computerNumbers = createComputerNumbers();
-        BaseballNumbers userNumbers = inputBaseballNumber();
+        judgeBaseballNumbers(computerNumbers);
     }
 
     private BaseballNumbers createComputerNumbers() {
@@ -39,5 +39,12 @@ public class BaseBall {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
+    }
+
+    private void judgeBaseballNumbers(BaseballNumbers computerNumbers) {
+        BaseballNumbers userNumbers = inputBaseballNumber();
+
+        int ball = userNumbers.countBall(computerNumbers);
+        int strike = userNumbers.countStrike(computerNumbers);
     }
 }
