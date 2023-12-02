@@ -5,7 +5,7 @@ import baseball.utils.Parser;
 import java.util.List;
 
 public class MyNumber {
-    private List<Integer> number;
+    private final List<Integer> number;
 
     public MyNumber(String number) {
         validate(number);
@@ -13,6 +13,7 @@ public class MyNumber {
     }
 
     private void validate(String number) {
+
     }
 
     public Integer getNumberIndex(Integer index) {
