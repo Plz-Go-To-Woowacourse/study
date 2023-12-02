@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.stream.IntStream;
 
 public class Result {
-    private Integer ballCount;
-    private Integer strikeCount;
+    private final Integer ballCount;
+    private final Integer strikeCount;
 
     public Result(MyNumber myNumber, ComputerNumber computerNumber) {
         this.ballCount = calculateBall(myNumber, computerNumber);
@@ -19,7 +19,8 @@ public class Result {
 
     private Integer calculateBall(MyNumber myNumber, ComputerNumber computerNumber) {
         return (int) IntStream.range(0, 3)
-                .filter(i -> computerNumber.contains(myNumber.getNumberIndex(i)))
+                .filter(i -> !myNumber.getNumberIndex(i).equals(computerNumber.getNumberIndex(i)) &&
+                        computerNumber.contains(myNumber.getNumberIndex(i)))
                 .count();
     }
 
