@@ -74,11 +74,4 @@ public class BaseballNumbers {
                 .findFirst()
                 .orElse(Rule.NO_NUMBER.getValue());
     }
-
-    @Override
-    public String toString() {
-        return "BaseballNumbers{" +
-                "numbers=" + numbers +
-                '}';
-    }
 }

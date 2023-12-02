@@ -18,10 +18,6 @@ public class Attempt {
         }
     }
 
-    public boolean isRetry() {
-        return attempt == Rule.RETRY_GAME.getValue();
-    }
-
     public boolean isEnd() {
         return attempt == Rule.END_GAME.getValue();
     }
