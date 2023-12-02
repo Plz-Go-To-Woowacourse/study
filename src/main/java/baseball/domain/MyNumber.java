@@ -13,7 +13,17 @@ public class MyNumber {
     }
 
     private void validate(String number) {
+        if (!isValidSize(number)) {
+            throwException();
+        }
+    }
 
+    private Boolean isValidSize(String number) {
+        return number.length() == 3;
+    }
+
+    private void throwException() {
+        throw new IllegalArgumentException();
     }
 
     public Integer getNumberIndex(Integer index) {
