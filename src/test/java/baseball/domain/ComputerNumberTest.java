@@ -16,32 +16,38 @@ class ComputerNumberTest {
 
     private static Stream<Arguments> computerNumbers() {
         return Stream.of(
-                Arguments.of(new int[] {1,2,3}, 0, 1),
-                Arguments.of(new int[] {1,2,3}, 1, 2),
-                Arguments.of(new int[] {1,2,3}, 2, 3),
-                Arguments.of(new int[] {4,5,6}, 0, 4),
-                Arguments.of(new int[] {4,5,6}, 1, 5),
-                Arguments.of(new int[] {4,5,6}, 2, 6)
+                Arguments.of(new int[] {1,2,3}, 1, true),
+                Arguments.of(new int[] {1,2,3}, 4, false)
         );
     }
 
     @DisplayName("생성한 숫자의 인덱스를 가져오는지")
+    @Test
+    void getNumberIndex() {
+        // given
+        final int[] numbers = {4,5,6};
+        NumberGenerator numberGenerator = new TestNumberGenerator(numbers);
+        ComputerNumber computerNumber = new ComputerNumber(numberGenerator);
+
+        // when & then
+        for (int i = 0; i < 3; i++) {
+            Integer actual = computerNumber.getNumberIndex(i);
+            assertThat(actual).isEqualTo(numbers[i]);
+        }
+    }
+
+    @DisplayName("해당 숫자가 포함되어있는지 확인하는지")
     @ParameterizedTest
     @MethodSource("computerNumbers")
-    void getNumberIndex(int[] numbers, int index, int expectedNumber) {
+    void contains(int[] numbers, Integer number, Boolean expected) {
         // given
         NumberGenerator numberGenerator = new TestNumberGenerator(numbers);
         ComputerNumber computerNumber = new ComputerNumber(numberGenerator);
 
         // when
-        Integer actual = computerNumber.getNumberIndex(index);
+        Boolean actual = computerNumber.contains(number);
 
         // then
-        assertThat(actual).isEqualTo(expectedNumber);
-    }
-
-    @DisplayName("해당 숫자가 포함되어있는지 확인")
-    @Test
-    void contains() {
+        assertThat(actual).isEqualTo(expected);
     }
 }
