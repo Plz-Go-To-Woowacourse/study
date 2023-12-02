@@ -1,13 +1,9 @@
 package baseball.controller;
 
-import baseball.constants.Rule;
 import baseball.domain.Attempt;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Judgment;
-import baseball.exception.DuplicateNumberException;
-import baseball.exception.InvalidAttemptException;
-import baseball.exception.InvalidNumberException;
-import baseball.exception.InvalidNumberSizeException;
+import baseball.exception.*;
 import baseball.utils.RandomNumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -54,14 +50,18 @@ public class BaseBall {
     }
 
     private BaseballNumbers inputBaseballNumber() {
-        while (true) {
-            try {
-                outputView.printNumberInput();
-                return new BaseballNumbers(inputView.inputNumbers());
-            } catch (InvalidNumberException | InvalidNumberSizeException | DuplicateNumberException exception) {
-                outputView.printErrorMessage(exception.getMessage());
-            }
-        }
+        outputView.printNumberInput();
+        return new BaseballNumbers(inputView.inputNumbers());
+
+//        입력에 대한 예외를 처리하는 catch문(우테코의 build 조건에 따라 예외를 던지면 종료될 수 있도록 해당 부분은 주석으로 달아둠)
+//        while (true) {
+//            try {
+//                outputView.printNumberInput();
+//                return new BaseballNumbers(inputView.inputNumbers());
+//            } catch (InvalidNumberException | InvalidNumberSizeException | DuplicateNumberException exception) {
+//                outputView.printErrorMessage(exception.getMessage());
+//            }
+//        }
     }
 
     private Judgment judgeBaseballNumbers(BaseballNumbers computerNumbers) {
@@ -78,7 +78,7 @@ public class BaseBall {
             outputView.printRetry();
             try {
                 return new Attempt(inputView.inputNumber());
-            } catch (InvalidAttemptException exception) {
+            } catch (BlankInputException | InvalidAttemptException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }

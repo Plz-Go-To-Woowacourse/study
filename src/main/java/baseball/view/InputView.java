@@ -30,6 +30,7 @@ public class InputView {
     public int inputNumber() {
         String input = inputValue();
 
+        validator.validateBlankInput(input);
         validator.validateNumber(input);
 
         return Integer.parseInt(input);

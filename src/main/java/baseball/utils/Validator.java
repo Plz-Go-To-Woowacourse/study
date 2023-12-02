@@ -2,9 +2,17 @@ package baseball.utils;
 
 import baseball.constants.ErrorMessage;
 import baseball.constants.Rule;
+import baseball.exception.BlankInputException;
 import baseball.exception.InvalidNumberException;
 
 public class Validator {
+
+    public void validateBlankInput(String numbers) {
+        if (numbers.isBlank()) {
+            throw new BlankInputException(ErrorMessage.BLANK_INPUT.getText());
+        }
+    }
+
     public void validateNumber(String numbers) {
         for (int index = 0; index < numbers.length(); index++) {
             if (!isNumber(numbers.charAt(index))) {
