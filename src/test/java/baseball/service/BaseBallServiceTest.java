@@ -16,10 +16,6 @@ class BaseBallServiceTest {
         baseBallService = new BaseBallService();
     }
 
-    @Test
-    void compareNumbers() {
-    }
-
     @DisplayName("1,2가 입력되지 않으면 예외처리를 하는지")
     @ParameterizedTest
     @ValueSource(strings = {"aa", "@sa", "3", "", " "})
