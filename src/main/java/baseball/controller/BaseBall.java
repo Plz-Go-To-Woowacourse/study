@@ -1,7 +1,9 @@
 package baseball.controller;
 
 import baseball.domain.BaseballNumbers;
+import baseball.exception.DuplicateNumberException;
 import baseball.exception.InvalidNumberException;
+import baseball.exception.InvalidNumberSizeException;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -19,8 +21,9 @@ public class BaseBall {
     private BaseballNumbers inputBaseballNumber() {
         while (true){
             try {
+                outputView.printNumberInput();
                 return new BaseballNumbers(inputView.inputNumbers());
-            } catch (InvalidNumberException exception) {
+            } catch (InvalidNumberException | InvalidNumberSizeException | DuplicateNumberException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
         }
@@ -28,7 +31,6 @@ public class BaseBall {
 
     public void play() {
         outputView.printGameStart();
-        outputView.printNumberInput();
 
         BaseballNumbers baseballNumber = inputBaseballNumber();
     }

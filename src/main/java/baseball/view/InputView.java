@@ -20,7 +20,7 @@ public class InputView {
 
         List<Integer> numbers = new ArrayList<>();
 
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < input.length(); index++) {
             numbers.add((int)input.charAt(index));
         }
 
