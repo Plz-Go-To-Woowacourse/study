@@ -4,6 +4,7 @@ import baseball.utils.Parser;
 
 import java.util.List;
 
+import static baseball.constants.DomainConstants.Blank;
 import static baseball.constants.DomainConstants.MAX_SIZE;
 
 public class MyNumber {
@@ -18,6 +19,14 @@ public class MyNumber {
         if (!isValidSize(number)) {
             throwException();
         }
+
+        if (hasBlank(number)) {
+            throwException();
+        }
+    }
+
+    private Boolean hasBlank(String number) {
+        return number.contains(Blank);
     }
 
     private Boolean isValidSize(String number) {
