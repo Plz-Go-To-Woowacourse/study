@@ -14,4 +14,12 @@ public class OutputView {
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }
+
+    public void printBallCount(int ball) {
+        System.out.printf(OutputMessage.BALL.getText() + " ", ball);
+    }
+
+    public void printStrikeCount(int strike) {
+        System.out.printf(OutputMessage.STRIKE.getText() + "%n", strike);
+    }
 }

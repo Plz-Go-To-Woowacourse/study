@@ -46,5 +46,12 @@ public class BaseBall {
 
         int ball = userNumbers.countBall(computerNumbers);
         int strike = userNumbers.countStrike(computerNumbers);
+
+        if (ball > 0) {
+            outputView.printBallCount(ball);
+        }
+        if (strike > 0) {
+            outputView.printStrikeCount(strike);
+        }
     }
 }
