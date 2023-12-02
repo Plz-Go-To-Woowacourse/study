@@ -4,6 +4,8 @@ import baseball.utils.Parser;
 
 import java.util.List;
 
+import static baseball.constants.DomainConstants.MAX_SIZE;
+
 public class MyNumber {
     private final List<Integer> number;
 
@@ -19,7 +21,7 @@ public class MyNumber {
     }
 
     private Boolean isValidSize(String number) {
-        return number.length() == 3;
+        return number.length() == MAX_SIZE;
     }
 
     private void throwException() {

@@ -2,6 +2,9 @@ package baseball.domain;
 
 import java.util.stream.IntStream;
 
+import static baseball.constants.DomainConstants.MAX_SIZE;
+import static baseball.constants.DomainConstants.MIN_SIZE;
+
 public class Result {
     private final Integer ballCount;
     private final Integer strikeCount;
@@ -12,18 +15,17 @@ public class Result {
     }
 
     private Integer calculateStrike(MyNumber myNumber, ComputerNumber computerNumber) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(MIN_SIZE, MAX_SIZE)
                 .filter(i -> myNumber.getNumberIndex(i).equals(computerNumber.getNumberIndex(i)))
                 .count();
     }
 
     private Integer calculateBall(MyNumber myNumber, ComputerNumber computerNumber) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(MIN_SIZE, MAX_SIZE)
                 .filter(i -> !myNumber.getNumberIndex(i).equals(computerNumber.getNumberIndex(i)) &&
                         computerNumber.contains(myNumber.getNumberIndex(i)))
                 .count();
     }
-
 
     public Boolean isGameOver() {
         return strikeCount.equals(3);

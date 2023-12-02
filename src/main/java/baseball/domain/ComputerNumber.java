@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constants.DomainConstants.*;
+
 public class ComputerNumber {
     private final List<Integer> computerNumber;
 
@@ -14,8 +16,8 @@ public class ComputerNumber {
 
     private List<Integer> createRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < MAX_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
