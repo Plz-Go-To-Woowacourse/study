@@ -1,8 +1,11 @@
 package baseball.controller;
 
+import baseball.constants.Rule;
+import baseball.domain.Attempt;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Judgment;
 import baseball.exception.DuplicateNumberException;
+import baseball.exception.InvalidAttemptException;
 import baseball.exception.InvalidNumberException;
 import baseball.exception.InvalidNumberSizeException;
 import baseball.utils.RandomNumberGenerator;
@@ -19,10 +22,17 @@ public class BaseBall {
     }
 
     public void play() {
-        startBaseBall();
+        while (true) {
+            start();
+            Attempt attempt = inputAttempt();
+
+            if (attempt.isEnd()) {
+                break;
+            }
+        }
     }
 
-    private void startBaseBall() {
+    private void start() {
         outputView.printGameStart();
         BaseballNumbers computerNumbers = createComputerNumbers();
 
@@ -61,5 +71,16 @@ public class BaseBall {
         int strike = userNumbers.countStrike(computerNumbers);
 
         return new Judgment(ball, strike);
+    }
+
+    private Attempt inputAttempt() {
+        while (true) {
+            outputView.printRetry();
+            try {
+                return new Attempt(inputView.inputNumber());
+            } catch (InvalidAttemptException exception) {
+                outputView.printErrorMessage(exception.getMessage());
+            }
+        }
     }
 }

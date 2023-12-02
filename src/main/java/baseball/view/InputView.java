@@ -27,6 +27,14 @@ public class InputView {
         return numbers;
     }
 
+    public int inputNumber() {
+        String input = inputValue();
+
+        validator.validateNumber(input);
+
+        return Integer.parseInt(input);
+    }
+
     private String inputValue() {
         return Console.readLine();
     }
