@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constants.Rule;
 import baseball.domain.Attempt;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.Judgment;
@@ -45,8 +46,9 @@ public class BaseBall {
 
     private BaseballNumbers createComputerNumbers() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        int size = Rule.NUMBER_COUNT.getValue();
 
-        return new BaseballNumbers(randomNumberGenerator.createRandomNumbers());
+        return new BaseballNumbers(randomNumberGenerator.createRandomNumbers(size));
     }
 
     private BaseballNumbers inputBaseballNumber() {

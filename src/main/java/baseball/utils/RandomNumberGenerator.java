@@ -7,10 +7,10 @@ import baseball.constants.Rule;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator {
-    public List<Integer> createRandomNumbers() {
+    public List<Integer> createRandomNumbers(int size) {
         List<Integer> numbers = new ArrayList<>();
 
-        while (numbers.size() < Rule.NUMBER_COUNT.getValue()) {
+        while (numbers.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(
                     Rule.RANDOM_NUMBER_START.getValue(),
                     Rule.RANDOM_NUMBER_END.getValue());
