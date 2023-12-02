@@ -39,6 +39,15 @@ class MyNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("중복된 값이 있으면 예외처리를 하는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"122", "222", "787"})
+    void getNumberIndex(String input) {
+        // given & when & then
+        assertThatThrownBy(() -> new MyNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("리스트 인덱스 값을 가져오는지")
     @ParameterizedTest
     @MethodSource("myNumbers")
