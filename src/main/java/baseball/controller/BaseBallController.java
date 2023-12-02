@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.domain.ComputerNumber;
 import baseball.domain.MyNumber;
+import baseball.domain.Result;
 import baseball.service.BaseBallService;
 import baseball.view.InputView;
 import baseball.view.OutPutView;
@@ -18,10 +19,21 @@ public class BaseBallController {
     }
 
     public void run() {
-        while (true) {
+        ComputerNumber computerNumber = startGame();
+        Result result = null;
+
+        while (result == null || !result.isGameOver()) {
             MyNumber myNumber = getMyNumber();
-            ComputerNumber computerNumber = getComputerNumber();
+
+            result = baseBallService.compareNumbers(myNumber, computerNumber);
+
+            outPutView.displayResultMessage(result);
         }
+    }
+
+    private ComputerNumber startGame() {
+        outPutView.startBaseBallMessage();
+        return getComputerNumber();
     }
 
     private ComputerNumber getComputerNumber() {
@@ -29,7 +41,7 @@ public class BaseBallController {
     }
 
     private MyNumber getMyNumber() {
-        outPutView.startBaseBall();
+        outPutView.inputNumberMessage();
         String inputNumber = inputView.inputNumber();
 
         return new MyNumber(inputNumber);

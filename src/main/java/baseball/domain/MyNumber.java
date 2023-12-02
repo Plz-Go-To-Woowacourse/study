@@ -14,4 +14,8 @@ public class MyNumber {
 
     private void validate(String number) {
     }
+
+    public Integer getNumberIndex(Integer index) {
+        return number.get(index);
+    }
 }

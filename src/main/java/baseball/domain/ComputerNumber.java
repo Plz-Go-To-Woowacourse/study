@@ -23,4 +23,12 @@ public class ComputerNumber {
 
         return computer;
     }
+
+    public Integer getNumberIndex(Integer index) {
+        return computerNumber.get(index);
+    }
+
+    public Boolean contains(Integer numberIndex) {
+        return computerNumber.contains(numberIndex);
+    }
 }
