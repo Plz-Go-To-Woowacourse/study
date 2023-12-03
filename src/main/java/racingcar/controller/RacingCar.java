@@ -28,11 +28,13 @@ public class RacingCar {
         outputView.printAttemptInput();
         int attempt = inputView.inputAttemptCount();
 
-        race(cars);
+        for(int count = 0; count < attempt; count++){
+            race(cars);
+        }
     }
 
     public void race(Cars cars) {
         List<RacingResult> result = cars.race(racingCarService, new RandomNumberGenerator());
-
+        outputView.printRacingResult(result);
     }
 }
