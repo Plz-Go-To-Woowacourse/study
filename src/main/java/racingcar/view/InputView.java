@@ -13,7 +13,7 @@ public class InputView {
         List<Car> carNames = new ArrayList<>();
 
         for (String name: names) {
-            carNames.add(new Car(name));
+            carNames.add(new Car(name.trim()));
         }
 
         return carNames;
