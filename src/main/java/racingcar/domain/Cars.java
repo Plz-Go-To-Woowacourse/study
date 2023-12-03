@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import racingcar.constants.ErrorMessage;
+import racingcar.service.RacingCarService;
+import racingcar.utils.RandomNumberGenerator;
+
 import java.util.List;
 
 public class Cars {
@@ -28,5 +31,17 @@ public class Cars {
     private boolean isDuplicateCar(Car car, List<Car> cars) {
         return cars.stream()
                 .anyMatch(carToCompare -> carToCompare.isDuplicateCar(car));
+    }
+
+    public void registerCar(RacingCarService racingCarService) {
+        for (Car car: cars){
+            racingCarService.addCar(car);
+        }
+    }
+
+    public void race(RacingCarService racingCarService, RandomNumberGenerator randomNumberGenerator) {
+        for (Car car: cars) {
+            racingCarService.moveCar(car, randomNumberGenerator.createRandomNumber());
+        }
     }
 }

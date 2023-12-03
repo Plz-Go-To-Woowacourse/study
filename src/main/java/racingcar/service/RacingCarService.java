@@ -2,15 +2,19 @@ package racingcar.service;
 
 import racingcar.constants.Rule;
 import racingcar.domain.Car;
-import racingcar.utils.RandomNumberGenerator;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RacingCarService {
     final private Map<Car, Integer> racingResult;
 
-    public RacingCarService(Map<Car, Integer> racingResult) {
-        this.racingResult = racingResult;
+    public RacingCarService() {
+        racingResult = new LinkedHashMap<>();
+    }
+
+    public void addCar(Car car) {
+        racingResult.put(car, 0);
     }
 
     private void forwardCar(Car car) {
