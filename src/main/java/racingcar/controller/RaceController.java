@@ -7,7 +7,6 @@ import racingcar.domain.Result;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceController {
@@ -27,15 +26,17 @@ public class RaceController {
         Movement movement = getMovement();
 
         outputView.printResultMessage();
-        List<Result> results = new ArrayList<>();
-        for (int i = 0; i < movement.size(); i++) {
-            Result result = raceService.move(racingCar, movement);
-            results.add(result);
+
+        List<Result> results = raceService.conductRace(racingCar, movement);
+        printResults(results);
+        outputView.printWinners(raceService.findWinners(results));
+    }
+
+    private void printResults(List<Result> results) {
+        for (Result result : results) {
             outputView.printResult(result);
             outputView.printBlank();
         }
-
-        outputView.printWinners(raceService.findWinners(results));
     }
 
     private Movement getMovement() {
