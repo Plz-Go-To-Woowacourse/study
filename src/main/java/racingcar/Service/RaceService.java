@@ -22,14 +22,4 @@ public class RaceService {
         Result finalResult = results.get(results.size() - 1);
         return finalResult.getWinners();
     }
-
-    public List<Result> conductRace(RacingCar racingCar, Movement movement) {
-        List<Result> results = new ArrayList<>();
-        for (int i = 0; i < movement.size(); i++) {
-            Result result = move(racingCar, movement);
-            results.add(result);
-        }
-
-        return results;
-    }
 }
