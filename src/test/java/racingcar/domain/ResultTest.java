@@ -37,5 +37,4 @@ class ResultTest {
         // then
         assertThat(actualWinners).isEqualTo(List.of(expectedWinner));
     }
-
 }
