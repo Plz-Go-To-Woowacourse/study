@@ -5,8 +5,7 @@ import racingcar.constants.Rule;
 import racingcar.domain.Car;
 import racingcar.model.RacingResult;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RacingCarService {
     final private Map<Car, Integer> racingResult;
@@ -43,5 +42,22 @@ public class RacingCarService {
         }
 
         return mark.toString();
+    }
+
+    public List<String> findWinners() {
+        int maxForwardCount = findMaxForwardCount();
+        List<String> winners = new ArrayList<>();
+
+        for (Car car: racingResult.keySet()) {
+            if (racingResult.get(car) == maxForwardCount) {
+                winners.add(car.toString());
+            }
+        }
+
+        return winners;
+    }
+
+    private int findMaxForwardCount() {
+        return Collections.max(racingResult.values());
     }
 }

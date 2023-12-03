@@ -27,10 +27,13 @@ public class RacingCar {
 
         outputView.printAttemptInput();
         int attempt = inputView.inputAttemptCount();
+        outputView.printLineSeperator();
 
         for(int count = 0; count < attempt; count++){
             race(cars);
         }
+
+        outputView.printWinners(racingCarService.findWinners());
     }
 
     public void race(Cars cars) {

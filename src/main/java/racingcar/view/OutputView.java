@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.constants.Mark;
 import racingcar.constants.OutputMessage;
 import racingcar.model.RacingResult;
 
@@ -12,7 +13,6 @@ public class OutputView {
 
     public void printAttemptInput() {
         System.out.println(OutputMessage.ATTEMP_REQUEST.getText());
-        printLineSeperator();
     }
 
     public void printRacingResult(List<RacingResult> racingResults) {
@@ -22,7 +22,11 @@ public class OutputView {
         printLineSeperator();
     }
 
-    private void printLineSeperator() {
+    public void printWinners(List<String> winners) {
+        System.out.printf(OutputMessage.WINNER.getText(), String.join(Mark.WINNER_SEPERATOR.getText(), winners));
+    }
+
+    public void printLineSeperator() {
         System.out.println();
     }
 }
