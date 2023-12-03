@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.constants.ErrorMessage;
+import racingcar.constants.Rule;
 
 public class Car {
     final private String name;
@@ -21,7 +22,7 @@ public class Car {
     }
 
     private boolean isLengthWithinRange(String name) {
-        return name.length() <= racingcar.constants.Car.NAME_MAX_LENGTH.getValue();
+        return name.length() <= Rule.NAME_MAX_LENGTH.getValue();
     }
 
     public boolean isDuplicateCar(Car car) {
