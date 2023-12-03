@@ -2,14 +2,16 @@ package racingcar.domain;
 
 import racingcar.constants.ErrorMessage;
 
-import java.util.List;
-
 public class Car {
     final private String name;
 
     public Car(String name) {
-        validateNameLength(name);
+        validate(name);
         this.name = name;
+    }
+
+    private void validate(String name) {
+        validateNameLength(name);
     }
 
     private void validateNameLength(String name) {

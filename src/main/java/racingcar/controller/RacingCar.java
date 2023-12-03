@@ -4,8 +4,6 @@ import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.List;
-
 public class RacingCar {
     private final OutputView outputView;
     private final InputView inputView;
