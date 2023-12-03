@@ -1,26 +1,36 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 import racingcar.utils.MovementGenerator;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarTest {
 
-    @DisplayName("자동차가 랜덤한 숫자 중 4 이상일 때만 전진하는지")
-    @ParameterizedTest
-    @CsvSource(value = {"3, 0", "4, 1"})
-    void moveCarsTest(Integer generatorValue, Integer expectedPosition) {
+    @DisplayName("움직인 횟수를 저장하고 있는지")
+    @Test
+    void moveCarsTest() {
         // given
-        MovementGenerator movementGenerator = () -> generatorValue;
-        Movement movement = new Movement(1);
+        int expectedValue = 0;
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        RacingCar racingCar = new RacingCar(carNames);
 
-        // when
-        Integer actual = movement.move(movementGenerator);
+        Movement movement = new Movement(5);
+        MovementGenerator movementGenerator = () -> 5;
 
-        // then
-        assertThat(actual).isEqualTo(expectedPosition);
+        // when & then
+        for (int i = 1; i < 6; i++) {
+            Map<String, Integer> actual = racingCar.moveCars(movement, movementGenerator);
+
+            for (Map.Entry<String, Integer> entry : actual.entrySet()) {
+                int currentPosition = entry.getValue();
+                assertThat(expectedValue + i).isEqualTo(currentPosition);
+            }
+        }
     }
 }
