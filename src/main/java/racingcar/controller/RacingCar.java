@@ -16,5 +16,8 @@ public class RacingCar {
     public void start() {
         outputView.printCarNameInput();
         Cars cars = new Cars(inputView.inputCarNames());
+
+        outputView.printAttemptInput();
+        int attempt = inputView.inputAttemptCount();
     }
 }

@@ -6,8 +6,15 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.constants.Mark;
 import racingcar.domain.Car;
+import racingcar.utils.Validator;
 
 public class InputView {
+    private Validator validator;
+
+    public InputView(Validator validator) {
+        this.validator = validator;
+    }
+
     public List<Car> inputCarNames() {
         String[] names = inputValue().split(Mark.CAR_NAME_SEPERATOR.getText());
         List<Car> carNames = new ArrayList<>();
@@ -17,6 +24,14 @@ public class InputView {
         }
 
         return carNames;
+    }
+
+    public int inputAttemptCount() {
+        String attempt = inputValue();
+
+        validator.validateNumber(attempt);
+
+        return Integer.parseInt(attempt);
     }
 
     private String inputValue() {
