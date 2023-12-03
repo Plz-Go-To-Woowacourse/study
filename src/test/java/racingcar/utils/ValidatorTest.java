@@ -41,4 +41,12 @@ class ValidatorTest {
         assertThatThrownBy(() -> validator.validateMovement(movement))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("움직임에 문자열이 들어갔는지")
+    @ParameterizedTest
+    @ValueSource(strings = {"12a", "bb", "@#"})
+    void validateMovementNumericTest(String movement) {
+        assertThatThrownBy(() -> validator.validateMovement(movement))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

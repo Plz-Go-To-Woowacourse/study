@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Validator {
     private static final String NUMERIC = ".*\\d.*";
+    private static final String ONLY_NUMERIC = "^[0-9]+$";
     private static final String WHITE_SPACE = " ";
 
     public void validateCarNames(List<String> carNames) {
@@ -22,6 +23,10 @@ public class Validator {
         }
     }
 
+    private Boolean isNumeric(String carName) {
+        return carName.matches(NUMERIC);
+    }
+
     private Boolean hasBlank(String value) {
         return value.isBlank() || value.contains(WHITE_SPACE);
     }
@@ -35,13 +40,13 @@ public class Validator {
             throwException();
         }
 
-        if (!isNumeric(movement)) {
+        if (!isOnlyNumeric(movement)) {
             throwException();
         }
     }
 
-    private Boolean isNumeric(String name) {
-        return name.matches(NUMERIC);
+    private Boolean isOnlyNumeric(String movement) {
+        return movement.matches(ONLY_NUMERIC);
     }
 
     private void throwException() {
