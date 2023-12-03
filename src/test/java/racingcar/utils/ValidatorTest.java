@@ -16,7 +16,15 @@ class ValidatorTest {
         validator = new Validator();
     }
 
-    @DisplayName("자동차 명에 공백 및 빈값이 들어갔는지")
+    @DisplayName("자동차명에 숫자가 들어갔는지")
+    @Test
+    void validateCarNamesNumericTest() {
+        List<String> carNames = List.of(" pobi1", "232", "j3n", "w52n");
+        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차명에 공백 및 빈값이 들어갔는지")
     @Test
     void validateCarNamesBlankTest() {
         List<String> carNames = List.of(" pobi", "", "j n", "woni ");
