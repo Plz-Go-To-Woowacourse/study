@@ -21,7 +21,8 @@ public class RacingCar {
         for (String carName : carNames) {
             Integer currentPosition = carPositions.get(carName);
             Integer movedPosition = movement.move(movementGenerator);
-            carPositions.put(carName, currentPosition+movedPosition);
+
+            carPositions.put(carName, currentPosition + movedPosition);
         }
 
         return carPositions;

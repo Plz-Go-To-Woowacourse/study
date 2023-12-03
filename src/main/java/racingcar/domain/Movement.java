@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import racingcar.utils.MovementGenerator;
 
+import static racingcar.constants.DomainConstants.MOVE_STANDARD;
+import static racingcar.constants.DomainConstants.START_MOVED_COUNT;
+
 public class Movement {
     private final Integer moveCount;
 
@@ -10,9 +13,9 @@ public class Movement {
     }
 
     public Integer move(MovementGenerator movementGenerator) {
-        int movedCount = 0;
+        int movedCount = START_MOVED_COUNT;
 
-        if (movementGenerator.generate() >= 4) {
+        if (movementGenerator.generate() >= MOVE_STANDARD) {
             movedCount++;
         }
 
