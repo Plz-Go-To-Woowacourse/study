@@ -1,7 +1,9 @@
 package racingcar.service;
 
+import racingcar.constants.Mark;
 import racingcar.constants.Rule;
 import racingcar.domain.Car;
+import racingcar.model.RacingResult;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class RacingCarService {
     }
 
     private void forwardCar(Car car) {
-        int move = racingResult.get(car) + 1;
+        int move = racingResult.get(car) + Rule.MOVE_FORWARD_COUNT.getValue();
         racingResult.put(car, move);
     }
 
@@ -26,5 +28,20 @@ public class RacingCarService {
         if (randomNumber >= Rule.MOVE_STANDARD_NUMBER.getValue()) {
             forwardCar(car);
         }
+    }
+
+    public RacingResult findCarRacingResult(Car car) {
+        return new RacingResult(car.toString(), markForwardCount(car));
+    }
+
+    private String markForwardCount(Car car) {
+        int forwardCount = racingResult.get(car);
+        StringBuilder mark = new StringBuilder();
+
+        for (int count = 0; count < forwardCount; count++) {
+            mark.append(Mark.CAR_FORWARD.getText());
+        }
+
+        return mark.toString();
     }
 }

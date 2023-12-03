@@ -1,9 +1,11 @@
 package racingcar.domain;
 
 import racingcar.constants.ErrorMessage;
+import racingcar.model.RacingResult;
 import racingcar.service.RacingCarService;
 import racingcar.utils.RandomNumberGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -39,9 +41,14 @@ public class Cars {
         }
     }
 
-    public void race(RacingCarService racingCarService, RandomNumberGenerator randomNumberGenerator) {
+    public List<RacingResult> race(RacingCarService racingCarService, RandomNumberGenerator randomNumberGenerator) {
+        List<RacingResult> racingResults = new ArrayList<>();
+
         for (Car car: cars) {
             racingCarService.moveCar(car, randomNumberGenerator.createRandomNumber());
+            racingResults.add(racingCarService.findCarRacingResult(car));
         }
+
+        return racingResults;
     }
 }

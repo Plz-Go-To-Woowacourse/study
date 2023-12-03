@@ -1,10 +1,13 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.model.RacingResult;
 import racingcar.service.RacingCarService;
 import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class RacingCar {
     private final OutputView outputView;
@@ -29,6 +32,7 @@ public class RacingCar {
     }
 
     public void race(Cars cars) {
-        cars.race(racingCarService, new RandomNumberGenerator());
+        List<RacingResult> result = cars.race(racingCarService, new RandomNumberGenerator());
+
     }
 }

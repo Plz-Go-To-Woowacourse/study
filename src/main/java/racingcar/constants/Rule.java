@@ -4,7 +4,8 @@ public enum Rule {
     NAME_MAX_LENGTH(5),
     MOVE_NUMBER_START(0),
     MOVE_NUMBER_END(9),
-    MOVE_STANDARD_NUMBER(4);
+    MOVE_STANDARD_NUMBER(4),
+    MOVE_FORWARD_COUNT(1);
 
     private final int value;
 
