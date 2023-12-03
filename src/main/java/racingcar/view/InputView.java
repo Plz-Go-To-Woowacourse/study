@@ -6,6 +6,8 @@ import racingcar.utils.Validator;
 import java.util.Arrays;
 import java.util.List;
 
+import static racingcar.constants.ViewConstants.SPLIT_STANDARD;
+
 public class InputView {
     private final Validator validator;
 
@@ -15,7 +17,7 @@ public class InputView {
 
     public List<String> inputCars() {
         String carName = Console.readLine();
-        List<String> carNames = Arrays.asList(carName.split(","));
+        List<String> carNames = Arrays.asList(carName.split(SPLIT_STANDARD));
         validator.validateCarNames(carNames);
 
         return carNames;
