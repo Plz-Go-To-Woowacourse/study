@@ -16,7 +16,7 @@ public class InputView {
     }
 
     public List<Car> inputCarNames() {
-        String[] names = inputValue().split(Mark.CAR_NAME_SEPERATOR.getText());
+        String[] names = inputValue().split(Mark.CAR_NAME_SEPARATOR.getText());
         List<Car> carNames = new ArrayList<>();
 
         for (String name: names) {

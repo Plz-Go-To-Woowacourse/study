@@ -27,7 +27,7 @@ public class RacingCar {
 
         outputView.printAttemptInput();
         int attempt = inputView.inputAttemptCount();
-        outputView.printLineSeperator();
+        outputView.printLineSeparator();
 
         for(int count = 0; count < attempt; count++){
             race(cars);

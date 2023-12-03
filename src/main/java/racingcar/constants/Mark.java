@@ -1,8 +1,8 @@
 package racingcar.constants;
 
 public enum Mark {
-    CAR_NAME_SEPERATOR(","),
-    WINNER_SEPERATOR(", "),
+    CAR_NAME_SEPARATOR(","),
+    WINNER_SEPARATOR(", "),
     CAR_FORWARD("-");
 
     private final String text;

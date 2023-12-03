@@ -19,14 +19,14 @@ public class OutputView {
         for (RacingResult racingResult: racingResults) {
             System.out.println(racingResult.toString());
         }
-        printLineSeperator();
+        printLineSeparator();
     }
 
     public void printWinners(List<String> winners) {
-        System.out.printf(OutputMessage.WINNER.getText(), String.join(Mark.WINNER_SEPERATOR.getText(), winners));
+        System.out.printf(OutputMessage.WINNER.getText(), String.join(Mark.WINNER_SEPARATOR.getText(), winners));
     }
 
-    public void printLineSeperator() {
+    public void printLineSeparator() {
         System.out.println();
     }
 }
