@@ -3,6 +3,8 @@ package racingcar.utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -32,7 +34,11 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void validateMovement() {
+    @DisplayName("움직임에 공백 및 빈값이 들어갔는지")
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "", "5 ", " 6"})
+    void validateMovementBlankTest(String movement) {
+        assertThatThrownBy(() -> validator.validateMovement(movement))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

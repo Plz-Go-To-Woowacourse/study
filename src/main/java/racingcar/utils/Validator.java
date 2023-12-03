@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Validator {
     private static final String NUMERIC = ".*\\d.*";
+    private static final String WHITE_SPACE = " ";
 
     public void validateCarNames(List<String> carNames) {
         for (String carName : carNames) {
@@ -15,10 +16,14 @@ public class Validator {
                 throwException();
             }
 
-            if (carName.isBlank()) {
+            if (hasBlank(carName)) {
                 throwException();
             }
         }
+    }
+
+    private Boolean hasBlank(String value) {
+        return value.isBlank() || value.contains(WHITE_SPACE);
     }
 
     private Boolean isValidSize(String carName) {
@@ -26,7 +31,7 @@ public class Validator {
     }
 
     public void validateMovement(String movement) {
-        if (movement.isBlank()) {
+        if (hasBlank(movement)) {
             throwException();
         }
 
