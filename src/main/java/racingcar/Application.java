@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.Service.RaceService;
 import racingcar.controller.RaceController;
 import racingcar.utils.Validator;
 import racingcar.view.InputView;
@@ -9,8 +10,9 @@ public class Application {
     public static void main(String[] args) {
         RaceController raceController = new RaceController(
                 new OutputView(),
-                new InputView(new Validator())
-        );
+                new InputView(new Validator()),
+                new RaceService()
+                );
         raceController.run();
     }
 }
