@@ -4,8 +4,10 @@ import java.util.List;
 
 public class RacingCar {
     private final List<String> CarNames;
+    private final Integer movement;
 
-    public RacingCar(List<String> carNames) {
-        CarNames = carNames;
+    public RacingCar(List<String> carNames, Integer movement) {
+        this.CarNames = carNames;
+        this.movement = movement;
     }
 }

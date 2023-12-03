@@ -16,8 +16,15 @@ public class InputView {
     public List<String> inputCars() {
         String carName = Console.readLine();
         List<String> carNames = Arrays.asList(carName.split(","));
-        validator.validate(carNames);
+        validator.validateCarNames(carNames);
 
         return carNames;
+    }
+
+    public Integer inputMovement() {
+        String movement = Console.readLine();
+        validator.validateMovement(movement);
+
+        return Integer.parseInt(movement);
     }
 }
