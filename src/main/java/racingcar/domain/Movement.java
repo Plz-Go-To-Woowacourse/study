@@ -11,12 +11,15 @@ public class Movement {
 
     public Integer move(MovementGenerator movementGenerator) {
         int movedCount = 0;
-        for (int i = 0; i < moveCount; i++) {
-            if (movementGenerator.generate() >= 4) {
-                movedCount ++;
-            }
+
+        if (movementGenerator.generate() >= 4) {
+            movedCount++;
         }
 
         return movedCount;
+    }
+
+    public int size() {
+        return moveCount;
     }
 }

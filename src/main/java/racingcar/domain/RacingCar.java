@@ -2,36 +2,28 @@ package racingcar.domain;
 
 import racingcar.utils.MovementGenerator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class RacingCar {
     private final List<String> carNames;
-    private final Movement movement;
+    private final Map<String, Integer> carPositions = new HashMap<>();
 
-    public RacingCar(List<String> carNames, Integer movement) {
+    public RacingCar(List<String> carNames) {
         this.carNames = carNames;
-        this.movement = new Movement(movement);
-    }
-
-    public List<Integer> move(MovementGenerator movementGenerator) {
-        List<Integer> movementResult = new ArrayList<>();
         for (String carName : carNames) {
-            Integer moveCount = movement.move(movementGenerator);
-            movementResult.add(moveCount);
+            carPositions.put(carName, 0);
         }
-
-        return movementResult;
     }
 
-    public Map<String, Integer> getNameToMoveCountMap(List<Integer> moveResult) {
-        Map<String, Integer> nameToMoveCountMap = new HashMap<>();
-        for (int i = 0; i < carNames.size(); i++) {
-            nameToMoveCountMap.put(carNames.get(i), moveResult.get(i));
+    public Map<String, Integer> moveCars(Movement movement, MovementGenerator movementGenerator) {
+        for (String carName : carNames) {
+            Integer currentPosition = carPositions.get(carName);
+            Integer movedPosition = movement.move(movementGenerator);
+            carPositions.put(carName, currentPosition+movedPosition);
         }
 
-        return nameToMoveCountMap;
+        return carPositions;
     }
 }
