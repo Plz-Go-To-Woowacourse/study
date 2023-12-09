@@ -6,4 +6,7 @@ public class Validator {
 
     public void validateWinningNumber(String winningNumber) {
     }
+
+    public void validateBonusNumber(String bonusNumber) {
+    }
 }

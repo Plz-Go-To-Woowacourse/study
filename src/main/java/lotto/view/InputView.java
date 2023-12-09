@@ -26,4 +26,11 @@ public class InputView {
 
         return Parser.convertWinningNumber(winningNumber);
     }
+
+    public Integer inputBonusNumber() {
+        String bonusNumber = Console.readLine();
+        validator.validateBonusNumber(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
+    }
 }

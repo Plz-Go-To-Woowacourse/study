@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.domain.PurchasedLotto;
 import lotto.domain.WinningLotto;
-import lotto.exception.InvalidPriceInputException;
+import lotto.exception.InvalidInputException;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -19,17 +19,33 @@ public class LottoController {
 
     public void run() {
         PurchasedLotto purchasedLotto = buyLotto();
-        WinningLotto winningLotto = inputWinningNumber();
+        WinningLotto winningLotto = getWinningLotto();
     }
 
-    private WinningLotto inputWinningNumber() {
+    private WinningLotto getWinningLotto() {
+        List<Integer> winningNumbers = getWinningNumber();
+        Integer bonusNumber = getBonusNumber();
+
+        return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private Integer getBonusNumber() {
+        while (true) {
+            try {
+                outputView.printBonusNumberMessage();
+                return inputView.inputBonusNumber();
+            } catch (InvalidInputException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private List<Integer> getWinningNumber() {
         while (true) {
             try {
                 outputView.printWinningLottoMessage();
-                List<Integer> winningNumbers = inputView.inputWinningNumber();
-
-                return new WinningLotto(winningNumbers);
-            } catch (InvalidPriceInputException e) {
+                return inputView.inputWinningNumber();
+            } catch (InvalidInputException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
@@ -45,7 +61,7 @@ public class LottoController {
                 outputView.printLottoList(purchasedLotto);
 
                 return purchasedLotto;
-            } catch (InvalidPriceInputException e) {
+            } catch (InvalidInputException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
