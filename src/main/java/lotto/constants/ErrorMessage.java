@@ -2,8 +2,7 @@ package lotto.constants;
 
 public enum ErrorMessage {
     INVALID_NUMBER("숫자를 입력해주세요."),
-    INVALID_LOTTO_PURCHASE_AMOUNT("로또는 1,000원 단위로 구매 가능합니다.")
-    ;
+    INVALID_LOTTO_PURCHASE_AMOUNT("로또는 1,000원 단위로 구매 가능합니다.");
 
     private final String PREFIX = "[ERROR]";
     private final String text;
@@ -13,6 +12,6 @@ public enum ErrorMessage {
     }
 
     public String getText() {
-        return text;
+        return PREFIX + " " + text;
     }
 }

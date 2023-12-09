@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import lotto.Exception.InvalidNumberException;
+import lotto.Exception.InvalidPriceException;
 import lotto.domain.Receipt;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -14,7 +16,19 @@ public class LottoMachine {
     }
 
     public void start() {
+        Receipt receipt = purchaseLotto();
+    }
+
+    private Receipt purchaseLotto() {
         outputView.printPurchaseAmountInput();
-        Receipt receipt = new Receipt(inputView.inputPurchaseAmount());
+
+        while (true) {
+            try {
+                int purchaseAmount = inputView.inputPurchaseAmount();
+                return new Receipt(purchaseAmount);
+            } catch (InvalidNumberException | InvalidPriceException exception) {
+                outputView.printErrorMessage(exception.getMessage());
+            }
+        }
     }
 }
