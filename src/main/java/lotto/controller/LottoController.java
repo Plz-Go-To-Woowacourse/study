@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.PurchasedLotto;
+import lotto.exception.InvalidPriceInputException;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -18,9 +19,18 @@ public class LottoController {
     }
 
     private PurchasedLotto buyLotto() {
-        outputView.buyLottoMessage();
-        Integer price = inputView.buyLotto();
+        while (true) {
+            try {
+                outputView.printBuyLottoMessage();
+                Integer price = inputView.buyLotto();
 
-        return new PurchasedLotto(price);
+                PurchasedLotto purchasedLotto = new PurchasedLotto(price);
+                outputView.printLottoList(purchasedLotto);
+
+                return purchasedLotto;
+            } catch (InvalidPriceInputException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 }
