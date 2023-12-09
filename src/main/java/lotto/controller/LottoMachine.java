@@ -39,6 +39,7 @@ public class LottoMachine {
         BonusNumber bonusNumber = generateBonusNumber(winningLotto);
 
         outputView.printLottoStatistics();
+        updateRank(lottoCount, winningLotto, bonusNumber);
     }
 
     private Receipt purchaseLotto() {
@@ -86,13 +87,15 @@ public class LottoMachine {
         }
     }
 
-    private void findRank(Lotto winningLotto, BonusNumber bonusNumber) {
-        for (int index = 0; index < Rule.LOTTO_NUMBER_COUNT.getValue(); index++) {
+    private void updateRank(int lottoCount, Lotto winningLotto, BonusNumber bonusNumber) {
+        for (int index = 0; index < lottoCount; index++) {
             Lotto lotto = lottoService.findLotto(index);
 
             int matchCount = lottoService.calcMatchCount(lotto, winningLotto);
             boolean isBonusNumberMatched = lottoService.isBonusNumberMatched(lotto, bonusNumber);
+            BonusMatch bonusMatch = lottoService.checkBonusMatch(matchCount, isBonusNumberMatched);
 
+            lottoService.updateLottoRank(matchCount, bonusMatch);
         }
     }
 }

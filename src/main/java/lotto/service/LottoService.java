@@ -1,5 +1,7 @@
 package lotto.service;
 
+import lotto.constants.lotto.BonusMatch;
+import lotto.constants.lotto.Rank;
 import lotto.constants.lotto.WinningResult;
 import lotto.constants.lotto.Rule;
 import lotto.domain.BonusNumber;
@@ -39,20 +41,30 @@ public class LottoService {
         return lottery.get(index);
     }
 
-//    public void findLottoRank(Lotto lotto, Lotto winningLotto) {
-//        int matchCount = calcMatchCount(lotto, winningLotto);
-//        BonusMatch bonusMatch = BonusMatch.NOT_RELEVANT;
-//
-//        if (matchCount == 5) {
-//            bonusMatch = checkBonusMatch(lotto, );
-//        }
-//    }
-//
-////    public BonusMatch checkBonusMatch(int matchCount, boolean isBonusNumberMatched, Lotto lotto) {
-////        if (matchCount == 5 && ) {
-////
-////        }
-////    }
+    public void updateLottoRank(int matchCount, BonusMatch bonusMatch) {
+        WinningResult rank = WinningResult.findWinningResult(matchCount, bonusMatch);
+        int value = 1;
+
+        if (winningResult.containsKey(rank)) {
+            value += winningResult.get(rank);
+        }
+
+        winningResult.put(rank, value);
+    }
+
+    public BonusMatch checkBonusMatch(int matchCount, boolean isBonusNumberMatched) {
+        BonusMatch bonusMatch = Rank.checkBonusMatch(matchCount);
+
+        if (bonusMatch == BonusMatch.NOT_RELEVANT) {
+            return bonusMatch;
+        }
+
+        if (isBonusNumberMatched) {
+            return BonusMatch.MATCH;
+        }
+
+        return BonusMatch.NO_MATCH;
+    }
 
     public int calcMatchCount(Lotto lotto, Lotto winningLotto) {
         return lotto.calcMatchCount(winningLotto);
