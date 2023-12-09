@@ -5,9 +5,10 @@ import lotto.exception.payload.ErrorMessage;
 
 import java.util.List;
 
-import static lotto.constants.ValidatorConstants.NUMERIC;
 
 public class Validator {
+    private static final String NUMERIC = "^\\d+$";
+
     public void validatePrice(String price) {
         if (!isNumeric(price)) {
             throw new InvalidInputException(ErrorMessage.INVALID_PRICE_NUMERIC);
