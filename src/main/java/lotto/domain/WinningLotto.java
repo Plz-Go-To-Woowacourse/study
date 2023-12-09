@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.domain.vo.BonusNumber;
 import lotto.exception.InvalidInputException;
-import lotto.exception.message.ErrorMessage;
+import lotto.exception.payload.ErrorMessage;
 
 import java.util.HashSet;
 import java.util.List;

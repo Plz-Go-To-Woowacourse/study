@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import lotto.exception.InvalidInputException;
-import lotto.exception.message.ErrorMessage;
+import lotto.exception.payload.ErrorMessage;
 
 import java.util.List;
 

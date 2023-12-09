@@ -1,4 +1,4 @@
-package lotto.exception.message;
+package lotto.exception.payload;
 
 public enum ErrorMessage {
     INVALID_PRICE_NUMERIC("[ERROR] 잘못된 금액을 입력하셨습니다. 금액에는 숫자만 들어가야 합니다."),
