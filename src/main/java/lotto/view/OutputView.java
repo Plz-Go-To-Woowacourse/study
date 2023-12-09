@@ -19,4 +19,9 @@ public class OutputView {
     public void printLotto(String lotto) {
         System.out.printf((OutputMessage.LOTTO_NUMBERS.getText()) + "%n", lotto);
     }
+
+    public void printWinningNumberInput() {
+        System.out.println();
+        System.out.println(OutputMessage.WINNING_NUMBER_INPUT.getText());
+    }
 }

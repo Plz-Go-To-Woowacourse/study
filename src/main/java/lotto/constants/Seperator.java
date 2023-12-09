@@ -1,7 +1,8 @@
 package lotto.constants;
 
 public enum Seperator {
-    LOTTO_NUMBER(", ")
+    LOTTO_NUMBER(", "),
+    WINNING_NUMBER(",")
     ;
 
     private final String value;

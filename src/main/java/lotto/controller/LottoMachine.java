@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Exception.InvalidLottoException;
 import lotto.Exception.InvalidNumberException;
 import lotto.Exception.InvalidPriceException;
 import lotto.LottoService;
@@ -9,6 +10,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LottoMachine {
     private final InputView inputView;
@@ -29,6 +31,9 @@ public class LottoMachine {
 
         generateLottery(lottoCount);
         showLottery(lottoCount);
+
+        outputView.printWinningNumberInput();
+        Lotto winningLotto = generateWinningLotto();
     }
 
     private Receipt purchaseLotto() {
@@ -53,6 +58,16 @@ public class LottoMachine {
     private void showLottery(int lottoCount) {
         for (int index = 0; index < lottoCount; index++){
             outputView.printLotto(lottoService.findLotto(index));
+        }
+    }
+
+    private Lotto generateWinningLotto() {
+        while (true){
+            try {
+                return new Lotto(inputView.inputWinningNumbers());
+            } catch (InvalidNumberException | InvalidLottoException exception) {
+                outputView.printErrorMessage(exception.getMessage());
+            }
         }
     }
 }
