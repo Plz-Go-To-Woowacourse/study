@@ -17,6 +17,7 @@ public class LottoMachine {
 
     public void start() {
         Receipt receipt = purchaseLotto();
+        outputView.printPurchaseCount(receipt.toString());
     }
 
     private Receipt purchaseLotto() {
