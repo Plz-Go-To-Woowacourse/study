@@ -27,10 +27,10 @@ public class InputView {
         return Parser.convertWinningNumber(winningNumber);
     }
 
-    public Integer inputBonusNumber() {
+    public String inputBonusNumber() {
         String bonusNumber = Console.readLine().trim();
         validator.validateBonusNumber(bonusNumber);
 
-        return Integer.parseInt(bonusNumber);
+        return bonusNumber;
     }
 }

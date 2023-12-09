@@ -38,9 +38,5 @@ public class Validator {
         if (bonusNumber.isEmpty()) {
             throw new InvalidInputException(ErrorMessage.INVALID_BONUS_NUMBER_EMPTY);
         }
-
-        if (bonusNumber.length() != 1) {
-            throw new InvalidInputException(ErrorMessage.INVALID_BONUS_NUMBER_SIZE);
-        }
     }
 }

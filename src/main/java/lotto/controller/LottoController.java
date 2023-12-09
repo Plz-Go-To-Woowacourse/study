@@ -32,12 +32,12 @@ public class LottoController {
 
     private WinningLotto getWinningLotto() {
         List<Integer> winningNumbers = getWinningNumber();
-        Integer bonusNumber = getBonusNumber();
+        String bonusNumber = getBonusNumber();
 
         return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private Integer getBonusNumber() {
+    private String getBonusNumber() {
         while (true) {
             try {
                 outputView.printBonusNumberMessage();
