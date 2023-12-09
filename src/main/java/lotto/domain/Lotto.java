@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constants.LottoRule;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,10 +13,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoRule.LOTTO_NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
 }

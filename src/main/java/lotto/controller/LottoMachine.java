@@ -2,9 +2,13 @@ package lotto.controller;
 
 import lotto.Exception.InvalidNumberException;
 import lotto.Exception.InvalidPriceException;
+import lotto.LottoService;
+import lotto.domain.Lotto;
 import lotto.domain.Receipt;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.ArrayList;
 
 public class LottoMachine {
     private final InputView inputView;
@@ -16,8 +20,9 @@ public class LottoMachine {
     }
 
     public void start() {
+        LottoService lottoService = new LottoService(new ArrayList<Lotto>());
         Receipt receipt = purchaseLotto();
-        outputView.printPurchaseCount(receipt.calcPurchaseCount());
+        outputView.printPurchaseCount(lottoService.calcPurchaseCount(receipt));
     }
 
     private Receipt purchaseLotto() {
@@ -32,4 +37,5 @@ public class LottoMachine {
             }
         }
     }
+
 }
