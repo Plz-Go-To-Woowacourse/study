@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Receipt;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,6 +15,6 @@ public class LottoMachine {
 
     public void start() {
         outputView.printPurchaseAmountInput();
-        inputView.inputPurchaseAmount();
+        Receipt receipt = new Receipt(inputView.inputPurchaseAmount());
     }
 }
