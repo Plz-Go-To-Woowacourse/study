@@ -3,7 +3,7 @@ package lotto.controller;
 import lotto.Exception.InvalidLottoException;
 import lotto.Exception.InvalidNumberException;
 import lotto.Exception.InvalidPriceException;
-import lotto.LottoService;
+import lotto.service.LottoService;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.Receipt;

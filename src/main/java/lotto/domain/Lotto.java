@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import lotto.Exception.InvalidLottoException;
-import lotto.constants.ErrorMessage;
+import lotto.constants.message.ErrorMessage;
 import lotto.constants.lotto.Rule;
-import lotto.constants.Seperator;
+import lotto.constants.expression.Seperator;
 
 import java.util.*;
 import java.util.stream.Collectors;

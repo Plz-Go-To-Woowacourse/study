@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.Exception.InvalidPriceException;
-import lotto.constants.ErrorMessage;
+import lotto.constants.message.ErrorMessage;
 import lotto.constants.lotto.Price;
 
 public class Receipt {

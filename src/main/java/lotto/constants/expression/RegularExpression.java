@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.constants.expression;
 
 public enum RegularExpression {
     NUMBER("[0-9]")

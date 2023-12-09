@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.service.LottoService;
 import lotto.controller.LottoMachine;
 import lotto.utils.InputValidator;
 import lotto.view.InputView;

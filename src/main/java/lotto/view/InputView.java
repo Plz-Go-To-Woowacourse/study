@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.constants.Seperator;
+import lotto.constants.expression.Seperator;
 import lotto.utils.InputValidator;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package lotto.constants;
+package lotto.constants.expression;
 
 public enum Seperator {
     LOTTO_NUMBER(", "),

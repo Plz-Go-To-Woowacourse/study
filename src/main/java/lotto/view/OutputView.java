@@ -1,7 +1,7 @@
 package lotto.view;
 
-import lotto.constants.OutputMessage;
-import lotto.constants.Seperator;
+import lotto.constants.message.OutputMessage;
+import lotto.constants.expression.Seperator;
 
 public class OutputView {
     public void printPurchaseAmountInput() {

@@ -1,8 +1,8 @@
 package lotto.utils;
 
 import lotto.Exception.InvalidNumberException;
-import lotto.constants.ErrorMessage;
-import lotto.constants.RegularExpression;
+import lotto.constants.message.ErrorMessage;
+import lotto.constants.expression.RegularExpression;
 
 public class InputValidator {
     public void validateNumber(String number) {
