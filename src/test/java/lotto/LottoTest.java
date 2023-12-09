@@ -1,11 +1,13 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.vo.BonusNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -25,4 +27,20 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("당첨 번호와 보너스 번호를 받아 맞은 개수를 정확히 세는지")
+    @Test
+    void countNumberTest() {
+        // given
+        List<Integer> actualNumbers = List.of(1,2,3,4,5,6);
+        List<Integer> expectedNumbers = List.of(4,5,6,7,8,9);
+        BonusNumber bonusNumber = new BonusNumber("7");
+        Lotto lotto = new Lotto(actualNumbers);
+
+        // when
+        Integer actualCount = lotto.countNumber(expectedNumbers, bonusNumber);
+
+        // then
+        assertThat(actualCount).isEqualTo(3);
+    }
 }
