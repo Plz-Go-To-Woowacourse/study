@@ -13,11 +13,11 @@ public class WinningLotto {
         this.bonusNumber = new BonusNumber(bonusNumber);
     }
 
-    @Override
-    public String toString() {
-        return "WinningLotto{" +
-                "winningNumbers=" + winningNumbers +
-                ", bonusNumber=" + bonusNumber +
-                '}';
+    public Integer countCorrectNumber(Lotto lotto) {
+        return lotto.countNumber(this.winningNumbers, this.bonusNumber);
+    }
+
+    public Boolean isCorrectBonusNumber(Lotto lotto) {
+        return lotto.isCorrectBonusNumber(bonusNumber);
     }
 }

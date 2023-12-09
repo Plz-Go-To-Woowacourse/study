@@ -39,4 +39,10 @@ public class PurchasedLotto {
         System.out.println(this.lottoCount + "개를 구매했습니다.");
         System.out.println(this.toString());
     }
+
+    public List<LottoResult> toLottoResultList(WinningLotto winningLotto) {
+        return this.lottos.stream()
+                .map(lotto -> new LottoResult(winningLotto.countCorrectNumber(lotto), winningLotto.isCorrectBonusNumber(lotto)))
+                .collect(Collectors.toList());
+    }
 }

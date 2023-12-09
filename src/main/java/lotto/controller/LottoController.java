@@ -1,8 +1,10 @@
 package lotto.controller;
 
+import lotto.domain.LottoResult;
 import lotto.domain.PurchasedLotto;
 import lotto.domain.WinningLotto;
 import lotto.exception.InvalidInputException;
+import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -11,15 +13,19 @@ import java.util.List;
 public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final LottoService lottoService;
 
-    public LottoController(InputView inputView, OutputView outputView) {
+    public LottoController(InputView inputView, OutputView outputView, LottoService lottoService) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.lottoService = lottoService;
     }
 
     public void run() {
         PurchasedLotto purchasedLotto = buyLotto();
         WinningLotto winningLotto = getWinningLotto();
+        List<LottoResult> lottoResult = lottoService.countMatchingNumbers(purchasedLotto, winningLotto);
+
     }
 
     private WinningLotto getWinningLotto() {
