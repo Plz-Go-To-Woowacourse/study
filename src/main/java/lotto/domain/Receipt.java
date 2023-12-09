@@ -7,12 +7,10 @@ import lotto.constants.OutputMessage;
 
 public class Receipt {
     private final int purchaseAmount;
-    private int purchaseCount;
 
     public Receipt(int purchaseAmount) {
         validate(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
-        purchaseCount = purchaseAmount / LottoPrice.PRICE_OF_LOTTO.getValue();
     }
 
     private void validate(int purchaseAmount) {
@@ -21,8 +19,7 @@ public class Receipt {
         }
     }
 
-    @Override
-    public String toString() {
-        return String.format(OutputMessage.LOTTO_PURCHASE_COUNT.getText(), purchaseCount);
+    public int calcPurchaseCount() {
+        return purchaseAmount / LottoPrice.PRICE_OF_LOTTO.getValue();
     }
 }

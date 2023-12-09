@@ -11,7 +11,9 @@ public class OutputView {
         System.out.println(errorMessage);
     }
 
-    public void printPurchaseCount(String purchaseCount) {
-        System.out.println(purchaseCount);
+    public void printPurchaseCount(int purchaseCount) {
+        System.out.println();
+        System.out.printf((OutputMessage.LOTTO_PURCHASE_COUNT.getText()) + "%n", purchaseCount);
+        System.out.println();
     }
 }
