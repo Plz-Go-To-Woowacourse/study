@@ -4,6 +4,7 @@ import lotto.Exception.InvalidLottoException;
 import lotto.Exception.InvalidNumberException;
 import lotto.Exception.InvalidPriceException;
 import lotto.LottoService;
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.Receipt;
 import lotto.view.InputView;
@@ -34,6 +35,9 @@ public class LottoMachine {
 
         outputView.printWinningNumberInput();
         Lotto winningLotto = generateWinningLotto();
+
+        outputView.printBonusNumberInput();
+        BonusNumber bonusNumber =
     }
 
     private Receipt purchaseLotto() {

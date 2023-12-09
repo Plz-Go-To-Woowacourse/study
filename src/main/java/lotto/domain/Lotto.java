@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.Exception.InvalidLottoException;
 import lotto.constants.ErrorMessage;
 import lotto.constants.LottoRule;
-import lotto.constants.OutputMessage;
 import lotto.constants.Seperator;
 
 import java.util.*;
@@ -34,6 +33,11 @@ public class Lotto {
         if (uniqueNumbers.size() != numbers.size()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_UNIQUE_NUMBERS.getText());
         }
+    }
+
+    public boolean isDuplicateNumberFromLotto(int lottoNumber) {
+        return numbers.stream()
+                .anyMatch(number -> number == lottoNumber);
     }
 
     @Override
