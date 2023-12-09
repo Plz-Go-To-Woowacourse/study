@@ -6,7 +6,7 @@ import lotto.domain.Reward;
 
 import java.util.Map;
 
-import static lotto.constants.ViewConstants.BUY_LOTTO_MESSAGE;
+import static lotto.constants.ViewConstants.*;
 
 public class OutputView {
 
@@ -23,21 +23,21 @@ public class OutputView {
     }
 
     public void printWinningLottoMessage() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(WINNING_NUMBER_MESSAGE);
     }
 
     public void printBonusNumberMessage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(BONUS_NUMBER_MESSAGE);
     }
 
     public void printResultMessage(Map<Reward, Long> resultCounts, Profit profit) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + resultCounts.getOrDefault(Reward.FIFTH, 0L) + "개");
-        System.out.println("4개 일치 (50,000원) - " + resultCounts.getOrDefault(Reward.FOURTH, 0L) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + resultCounts.getOrDefault(Reward.THIRD, 0L) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + resultCounts.getOrDefault(Reward.SECOND, 0L) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + resultCounts.getOrDefault(Reward.FIRST, 0L) + "개");
+        System.out.println(RESULT_ANALYSIS);
+        System.out.println(SEPARATE);
+        System.out.println(FIFTH_MESSAGE + resultCounts.getOrDefault(Reward.FIFTH, 0L) + COUNT_UNIT);
+        System.out.println(FOURTH_MESSAGE + resultCounts.getOrDefault(Reward.FOURTH, 0L) + COUNT_UNIT);
+        System.out.println(THIRD_MESSAGE + resultCounts.getOrDefault(Reward.THIRD, 0L) + COUNT_UNIT);
+        System.out.println(SECOND_MESSAGE + resultCounts.getOrDefault(Reward.SECOND, 0L) + COUNT_UNIT);
+        System.out.println(FIRST_MESSAGE + resultCounts.getOrDefault(Reward.FIRST, 0L) + COUNT_UNIT);
         System.out.println(profit.toString());
     }
 }
