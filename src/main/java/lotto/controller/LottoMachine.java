@@ -10,9 +10,6 @@ import lotto.domain.Receipt;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LottoMachine {
     private final InputView inputView;
     private final OutputView outputView;
