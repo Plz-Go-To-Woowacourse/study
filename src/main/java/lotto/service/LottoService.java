@@ -22,7 +22,7 @@ public class LottoService {
                 .mapToLong(entry -> entry.getKey().getReward() * entry.getValue())
                 .sum();
 
-        double profitRate = (double) total / lottoPrice;
+        double profitRate = (double) total / lottoPrice * 100;
         double roundedProfitRate = Math.round(profitRate * 100) / 100.0;
 
         return new Profit(roundedProfitRate);
