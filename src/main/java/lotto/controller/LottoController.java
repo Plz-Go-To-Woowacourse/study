@@ -1,9 +1,12 @@
 package lotto.controller;
 
 import lotto.domain.PurchasedLotto;
+import lotto.domain.WinningLotto;
 import lotto.exception.InvalidPriceInputException;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
     private final InputView inputView;
@@ -16,6 +19,20 @@ public class LottoController {
 
     public void run() {
         PurchasedLotto purchasedLotto = buyLotto();
+        WinningLotto winningLotto = inputWinningNumber();
+    }
+
+    private WinningLotto inputWinningNumber() {
+        while (true) {
+            try {
+                outputView.printWinningLottoMessage();
+                List<Integer> winningNumbers = inputView.inputWinningNumber();
+
+                return new WinningLotto(winningNumbers);
+            } catch (InvalidPriceInputException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
     }
 
     private PurchasedLotto buyLotto() {

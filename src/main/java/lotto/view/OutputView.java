@@ -17,4 +17,8 @@ public class OutputView {
     public void printErrorMessage(String message) {
         System.out.println(message);
     }
+
+    public void printWinningLottoMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }
