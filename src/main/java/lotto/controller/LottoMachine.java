@@ -40,6 +40,7 @@ public class LottoMachine {
 
         outputView.printLottoStatistics();
         updateRank(lottoCount, winningLotto, bonusNumber);
+        outputView.printWinningResult(lottoService.findResult());
     }
 
     private Receipt purchaseLotto() {

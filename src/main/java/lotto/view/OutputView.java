@@ -1,7 +1,10 @@
 package lotto.view;
 
+import lotto.constants.lotto.WinningResult;
 import lotto.constants.message.OutputMessage;
 import lotto.constants.expression.Seperator;
+
+import java.util.Map;
 
 public class OutputView {
     public void printPurchaseAmountInput() {
@@ -35,5 +38,15 @@ public class OutputView {
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
+    }
+
+    public void printWinningResult(Map<WinningResult, Integer> winningResult) {
+        for (WinningResult result: winningResult.keySet()) {
+            String standard = result.getStandard();
+            String prize = String.format("(%,d원)", result.getPrize());
+            int count = winningResult.get(result);
+
+            System.out.println(standard + " " + prize + " - " + count + "개");
+        }
     }
 }

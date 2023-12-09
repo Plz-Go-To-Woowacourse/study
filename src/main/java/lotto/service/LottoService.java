@@ -66,6 +66,10 @@ public class LottoService {
         return BonusMatch.NO_MATCH;
     }
 
+    public Map<WinningResult, Integer> findResult() {
+        return winningResult;
+    }
+
     public int calcMatchCount(Lotto lotto, Lotto winningLotto) {
         return lotto.calcMatchCount(winningLotto);
     }
