@@ -5,7 +5,7 @@ public enum OutputMessage {
     LOTTO_PURCHASE_COUNT("%d개를 구매했습니다."),
     WINNING_NUMBER_INPUT("당첨 번호를 입력해 주세요."),
     BONUS_NUMBER_INPUT("보너스 번호를 입력해 주세요."),
-    WINNING_STATISTIC("당첨 통계"),
+    WINNING_STATISTICS("당첨 통계"),
     RATE_OF_RETURN("총 수익률은 62.5%입니다."),
     LOTTO_NUMBERS("[%s]")
     ;

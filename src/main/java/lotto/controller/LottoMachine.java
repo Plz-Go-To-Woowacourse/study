@@ -35,6 +35,8 @@ public class LottoMachine {
 
         outputView.printBonusNumberInput();
         BonusNumber bonusNumber = generateBonusNumber(winningLotto);
+
+        outputView.printLottoStatistics();
     }
 
     private Receipt purchaseLotto() {

@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.constants.LottoRule;
+import lotto.constants.lotto.Rule;
 import lotto.domain.Lotto;
 import lotto.domain.Receipt;
 import lotto.utils.RandomNumberGenerator;
@@ -22,9 +22,9 @@ public class LottoService {
         RandomNumberGenerator generator = new RandomNumberGenerator();
 
         Lotto lotto = new Lotto(generator.createUniqueNumbers(
-                LottoRule.START_LOTTO_NUMBER.getValue(),
-                LottoRule.END_LOTTO_NUMBER.getValue(),
-                LottoRule.LOTTO_NUMBER_COUNT.getValue())
+                Rule.START_LOTTO_NUMBER.getValue(),
+                Rule.END_LOTTO_NUMBER.getValue(),
+                Rule.LOTTO_NUMBER_COUNT.getValue())
         );
 
         lottery.add(lotto);

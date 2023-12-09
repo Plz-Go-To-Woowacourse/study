@@ -1,12 +1,12 @@
-package lotto.constants;
+package lotto.constants.lotto;
 
-public enum LottoPrice {
+public enum Price {
     PRICE_OF_LOTTO(1_000)
     ;
 
     private final int value;
 
-    LottoPrice(int value) {
+    Price(int value) {
         this.value = value;
     }
 

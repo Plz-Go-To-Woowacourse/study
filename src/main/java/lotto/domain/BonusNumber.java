@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.Exception.InvalidLottoException;
 import lotto.constants.ErrorMessage;
-import lotto.constants.LottoRule;
+import lotto.constants.lotto.Rule;
 
 public class BonusNumber {
     private int number;
@@ -24,8 +24,8 @@ public class BonusNumber {
     }
 
     private void validateLottoNumber(int number) {
-        if (number < LottoRule.START_LOTTO_NUMBER.getValue()
-                || number > LottoRule.END_LOTTO_NUMBER.getValue()) {
+        if (number < Rule.START_LOTTO_NUMBER.getValue()
+                || number > Rule.END_LOTTO_NUMBER.getValue()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_LOTTO_NUMBER.getText());
         }
     }

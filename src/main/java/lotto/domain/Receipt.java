@@ -2,8 +2,7 @@ package lotto.domain;
 
 import lotto.Exception.InvalidPriceException;
 import lotto.constants.ErrorMessage;
-import lotto.constants.LottoPrice;
-import lotto.constants.OutputMessage;
+import lotto.constants.lotto.Price;
 
 public class Receipt {
     private final int purchaseAmount;
@@ -14,12 +13,12 @@ public class Receipt {
     }
 
     private void validate(int purchaseAmount) {
-        if (purchaseAmount % LottoPrice.PRICE_OF_LOTTO.getValue() != 0) {
+        if (purchaseAmount % Price.PRICE_OF_LOTTO.getValue() != 0) {
             throw new InvalidPriceException(ErrorMessage.INVALID_LOTTO_PURCHASE_AMOUNT.getText());
         }
     }
 
     public int calcPurchaseCount() {
-        return purchaseAmount / LottoPrice.PRICE_OF_LOTTO.getValue();
+        return purchaseAmount / Price.PRICE_OF_LOTTO.getValue();
     }
 }

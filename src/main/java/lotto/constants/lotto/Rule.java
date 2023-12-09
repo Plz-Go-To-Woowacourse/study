@@ -1,6 +1,6 @@
-package lotto.constants;
+package lotto.constants.lotto;
 
-public enum LottoRule {
+public enum Rule {
     START_LOTTO_NUMBER(1),
     END_LOTTO_NUMBER(45),
     LOTTO_NUMBER_COUNT(6)
@@ -8,7 +8,7 @@ public enum LottoRule {
 
     private final int value;
 
-    LottoRule(int value) {
+    Rule(int value) {
         this.value = value;
     }
 

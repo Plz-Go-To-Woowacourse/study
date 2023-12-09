@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.Exception.InvalidLottoException;
 import lotto.constants.ErrorMessage;
-import lotto.constants.LottoRule;
+import lotto.constants.lotto.Rule;
 import lotto.constants.Seperator;
 
 import java.util.*;
@@ -23,7 +23,7 @@ public class Lotto {
     }
 
     private void validateLottoNumberCount(List<Integer> numbers) {
-        if (numbers.size() != LottoRule.LOTTO_NUMBER_COUNT.getValue()) {
+        if (numbers.size() != Rule.LOTTO_NUMBER_COUNT.getValue()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_LOTTO_COUNT.getText());
         }
     }
@@ -37,8 +37,8 @@ public class Lotto {
     private boolean isLottoNumber(List<Integer> numbers) {
         return numbers.stream()
                 .allMatch(number ->
-                        number >= LottoRule.START_LOTTO_NUMBER.getValue()
-                                && number <= LottoRule.END_LOTTO_NUMBER.getValue());
+                        number >= Rule.START_LOTTO_NUMBER.getValue()
+                                && number <= Rule.END_LOTTO_NUMBER.getValue());
     }
 
     private void validateUniqueNumbers(List<Integer> numbers) {
