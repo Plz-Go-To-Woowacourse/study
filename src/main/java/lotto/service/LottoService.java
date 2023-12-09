@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.constants.lotto.Rank;
+import lotto.constants.lotto.WinningResult;
 import lotto.constants.lotto.Rule;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
@@ -12,11 +12,11 @@ import java.util.Map;
 
 public class LottoService {
     private final List<Lotto> lottery;
-    private final Map<Rank, Integer> winning;
+    private final Map<WinningResult, Integer> winningResult;
 
-    public LottoService(List<Lotto> lottery, Map<Rank, Integer> winning) {
+    public LottoService(List<Lotto> lottery, Map<WinningResult, Integer> winningResult) {
         this.lottery = lottery;
-        this.winning = winning;
+        this.winningResult = winningResult;
     }
 
     public int calcPurchaseCount(Receipt receipt) {
