@@ -18,6 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateLottoNumberCount(numbers);
+        validateLottoNumber(numbers);
         validateUniqueNumbers(numbers);
     }
 
@@ -25,6 +26,19 @@ public class Lotto {
         if (numbers.size() != LottoRule.LOTTO_NUMBER_COUNT.getValue()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_LOTTO_COUNT.getText());
         }
+    }
+
+    private void validateLottoNumber(List<Integer> numbers) {
+        if (!isLottoNumber(numbers)){
+            throw new InvalidLottoException(ErrorMessage.INVALID_LOTTO_NUMBER.getText());
+        }
+    }
+
+    private boolean isLottoNumber(List<Integer> numbers) {
+        return numbers.stream()
+                .allMatch(number ->
+                        number >= LottoRule.START_LOTTO_NUMBER.getValue()
+                                && number <= LottoRule.END_LOTTO_NUMBER.getValue());
     }
 
     private void validateUniqueNumbers(List<Integer> numbers) {
