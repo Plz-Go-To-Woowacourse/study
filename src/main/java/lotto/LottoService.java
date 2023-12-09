@@ -20,6 +20,7 @@ public class LottoService {
 
     public void purchaseLotto() {
         RandomNumberGenerator generator = new RandomNumberGenerator();
+
         Lotto lotto = new Lotto(generator.createUniqueNumbers(
                 LottoRule.START_LOTTO_NUMBER.getValue(),
                 LottoRule.END_LOTTO_NUMBER.getValue(),
@@ -27,5 +28,9 @@ public class LottoService {
         );
 
         lottery.add(lotto);
+    }
+
+    public String findLotto(int index) {
+        return lottery.get(index).toString();
     }
 }

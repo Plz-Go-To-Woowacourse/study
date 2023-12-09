@@ -13,16 +13,22 @@ import java.util.ArrayList;
 public class LottoMachine {
     private final InputView inputView;
     private final OutputView outputView;
+    private final LottoService lottoService;
 
-    public LottoMachine(InputView inputView, OutputView outputView) {
+    public LottoMachine(InputView inputView, OutputView outputView, LottoService lottoService) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.lottoService = lottoService;
     }
 
     public void start() {
-        LottoService lottoService = new LottoService(new ArrayList<Lotto>());
         Receipt receipt = purchaseLotto();
-        outputView.printPurchaseCount(lottoService.calcPurchaseCount(receipt));
+        int lottoCount = lottoService.calcPurchaseCount(receipt);
+
+        outputView.printPurchaseCount(lottoCount);
+
+        generateLottery(lottoCount);
+        showLottery(lottoCount);
     }
 
     private Receipt purchaseLotto() {
@@ -38,4 +44,15 @@ public class LottoMachine {
         }
     }
 
+    private void generateLottery(int lottoCount) {
+        for (int count = 0; count < lottoCount; count++){
+            lottoService.purchaseLotto();
+        }
+    }
+
+    private void showLottery(int lottoCount) {
+        for (int index = 0; index < lottoCount; index++){
+            outputView.printLotto(lottoService.findLotto(index));
+        }
+    }
 }

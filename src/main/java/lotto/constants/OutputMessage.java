@@ -6,7 +6,8 @@ public enum OutputMessage {
     WINNING_NUMBER_INPUT("당첨 번호를 입력해 주세요."),
     BONUS_NUMBER_INPUT("보너스 번호를 입력해 주세요."),
     WINNING_STATISTIC("당첨 통계"),
-    RATE_OF_RETURN("총 수익률은 62.5%입니다.")
+    RATE_OF_RETURN("총 수익률은 62.5%입니다."),
+    LOTTO_NUMBERS("[%s]")
     ;
 
     private final String text;

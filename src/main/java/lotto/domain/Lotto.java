@@ -3,10 +3,11 @@ package lotto.domain;
 import lotto.Exception.InvalidLottoException;
 import lotto.constants.ErrorMessage;
 import lotto.constants.LottoRule;
+import lotto.constants.OutputMessage;
+import lotto.constants.Seperator;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -33,5 +34,12 @@ public class Lotto {
         if (uniqueNumbers.size() != numbers.size()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_UNIQUE_NUMBERS.getText());
         }
+    }
+
+    @Override
+    public String toString() {
+        return numbers.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(Seperator.LOTTO_NUMBER.getValue()));
     }
 }
