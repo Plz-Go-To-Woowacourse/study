@@ -28,10 +28,6 @@ public class Validator {
                 throw new InvalidInputException(ErrorMessage.INVALID_WINNING_NUMBER_EMPTY);
             }
         }
-
-        if (winningNumbers.size() != 6) {
-            throw new InvalidInputException(ErrorMessage.INVALID_WINNING_NUMBER_SIZE);
-        }
     }
 
     public void validateBonusNumber(String bonusNumber) {

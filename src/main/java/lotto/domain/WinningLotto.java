@@ -22,6 +22,10 @@ public class WinningLotto {
         if (hasDuplicatedNumbers(winningNumbers)) {
             throw new InvalidInputException(ErrorMessage.INVALID_WINNING_NUMBER_DUPLICATED);
         }
+
+        if (winningNumbers.size() != 6) {
+            throw new InvalidInputException(ErrorMessage.INVALID_WINNING_NUMBER_SIZE);
+        }
     }
 
     private Boolean hasDuplicatedNumbers(List<Integer> winningNumbers) {
