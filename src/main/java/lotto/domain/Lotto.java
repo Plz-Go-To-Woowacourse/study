@@ -1,8 +1,12 @@
 package lotto.domain;
 
 import lotto.domain.vo.BonusNumber;
+import lotto.exception.InvalidInputException;
+import lotto.exception.message.ErrorMessage;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,6 +20,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        if (hasDuplicatedNumbers(numbers)) {
+            throw new InvalidInputException(ErrorMessage.DUPLICATED);
+        }
+    }
+
+    private Boolean hasDuplicatedNumbers(List<Integer> numbers) {
+        Set<Integer> notDuplicated = new HashSet<>(numbers);
+        return notDuplicated.size() != numbers.size();
     }
 
     // TODO: 추가 기능 구현
