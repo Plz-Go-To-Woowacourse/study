@@ -7,16 +7,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static lotto.constants.ViewConstants.*;
+
 public class PurchasedLotto {
     private final List<Lotto> lottos;
     private final Integer lottoCount;
 
     public PurchasedLotto(Integer price) {
         this.lottos = new ArrayList<>();
-        this.lottoCount = price / 1000;
+        this.lottoCount = price / LOTTO_PRICE_STANDARD;
 
         IntStream.range(0, lottoCount)
-                .mapToObj(i -> generateLottoNumbers(1, 45, 6))
+                .mapToObj(i -> generateLottoNumbers(MIN_RANGE, MAX_RANGE, SIZE))
                 .map(Lotto::new)
                 .forEach(lottos::add);
     }
@@ -47,6 +49,6 @@ public class PurchasedLotto {
     }
 
     public Integer countPrice() {
-        return lottoCount * 1000;
+        return lottoCount * LOTTO_PRICE_STANDARD;
     }
 }
