@@ -21,14 +21,14 @@ public class InputView {
     }
 
     public List<Integer> inputWinningNumber() {
-        String winningNumber = Console.readLine();
+        String winningNumber = Console.readLine().trim();
         validator.validateWinningNumber(Parser.convertToList(winningNumber));
 
         return Parser.convertWinningNumber(winningNumber);
     }
 
     public Integer inputBonusNumber() {
-        String bonusNumber = Console.readLine();
+        String bonusNumber = Console.readLine().trim();
         validator.validateBonusNumber(bonusNumber);
 
         return Integer.parseInt(bonusNumber);

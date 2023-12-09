@@ -22,7 +22,7 @@ public class Lotto {
         }
 
         if (hasDuplicatedNumbers(numbers)) {
-            throw new InvalidInputException(ErrorMessage.LOTTO_DUPLICATED);
+            throw new InvalidInputException(ErrorMessage.INVALID_LOTTO_DUPLICATED);
         }
     }
 
