@@ -45,4 +45,8 @@ public class PurchasedLotto {
                 .map(lotto -> new LottoResult(winningLotto.countCorrectNumber(lotto), winningLotto.isCorrectBonusNumber(lotto)))
                 .collect(Collectors.toList());
     }
+
+    public Integer countPrice() {
+        return lottoCount * 1000;
+    }
 }
