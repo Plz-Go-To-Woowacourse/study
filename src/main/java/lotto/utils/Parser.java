@@ -11,4 +11,10 @@ public class Parser {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static List<String> convertToList(String winningNumber) {
+        return Arrays.stream(winningNumber.split(","))
+                .map(String::trim)
+                .toList();
+    }
 }

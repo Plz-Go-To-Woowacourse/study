@@ -22,7 +22,7 @@ public class InputView {
 
     public List<Integer> inputWinningNumber() {
         String winningNumber = Console.readLine();
-        validator.validateWinningNumber(winningNumber);
+        validator.validateWinningNumber(Parser.convertToList(winningNumber));
 
         return Parser.convertWinningNumber(winningNumber);
     }
