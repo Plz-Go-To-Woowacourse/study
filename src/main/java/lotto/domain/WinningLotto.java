@@ -12,4 +12,12 @@ public class WinningLotto {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = new BonusNumber(bonusNumber);
     }
+
+    @Override
+    public String toString() {
+        return "WinningLotto{" +
+                "winningNumbers=" + winningNumbers +
+                ", bonusNumber=" + bonusNumber +
+                '}';
+    }
 }

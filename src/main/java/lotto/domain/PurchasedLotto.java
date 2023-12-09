@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class PurchasedLotto {
-    List<Lotto> lottos;
+    private final List<Lotto> lottos;
     private final Integer lottoCount;
 
     public PurchasedLotto(Integer price) {
@@ -27,9 +27,12 @@ public class PurchasedLotto {
 
     @Override
     public String toString() {
-        return this.lottos.stream()
-                .map(Lotto::toString)
-                .collect(Collectors.joining("\n"));
+        StringBuilder builder = new StringBuilder();
+        for (Lotto lotto : lottos) {
+            builder.append(lotto.toString()).append("\n");
+        }
+
+        return builder.toString();
     }
 
     public void printLottos() {
