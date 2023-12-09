@@ -14,7 +14,7 @@ public class InputView {
         this.inputValidator = inputValidator;
     }
 
-    public int inputPurchaseAmount() {
+    public int inputNumber() {
         String purchaseAmount = inputValue();
 
         inputValidator.validateNumber(purchaseAmount);
@@ -22,16 +22,16 @@ public class InputView {
         return Integer.parseInt(purchaseAmount);
     }
 
-    public List<Integer> inputWinningNumbers() {
-        String[] numbers = inputValue().split(Seperator.WINNING_NUMBER.getValue());
-        List<Integer> winningNumbers = new ArrayList<>();
+    public List<Integer> inputNumbers() {
+        String[] inputs = inputValue().split(Seperator.WINNING_NUMBER.getValue());
+        List<Integer> numbers = new ArrayList<>();
 
-        for (int index = 0; index < numbers.length; index++){
-            inputValidator.validateNumber(numbers[index]);
-            winningNumbers.add(Integer.parseInt(numbers[index]));
+        for (int index = 0; index < inputs.length; index++){
+            inputValidator.validateNumber(inputs[index]);
+            numbers.add(Integer.parseInt(inputs[index]));
         }
 
-        return winningNumbers;
+        return numbers;
     }
 
     private String inputValue() {

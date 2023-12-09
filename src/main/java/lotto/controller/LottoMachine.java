@@ -37,7 +37,7 @@ public class LottoMachine {
         Lotto winningLotto = generateWinningLotto();
 
         outputView.printBonusNumberInput();
-        BonusNumber bonusNumber =
+        BonusNumber bonusNumber = generateBonusNumber(winningLotto);
     }
 
     private Receipt purchaseLotto() {
@@ -45,7 +45,7 @@ public class LottoMachine {
 
         while (true) {
             try {
-                int purchaseAmount = inputView.inputPurchaseAmount();
+                int purchaseAmount = inputView.inputNumber();
                 return new Receipt(purchaseAmount);
             } catch (InvalidNumberException | InvalidPriceException exception) {
                 outputView.printErrorMessage(exception.getMessage());
@@ -68,7 +68,17 @@ public class LottoMachine {
     private Lotto generateWinningLotto() {
         while (true){
             try {
-                return new Lotto(inputView.inputWinningNumbers());
+                return new Lotto(inputView.inputNumbers());
+            } catch (InvalidNumberException | InvalidLottoException exception) {
+                outputView.printErrorMessage(exception.getMessage());
+            }
+        }
+    }
+
+    private BonusNumber generateBonusNumber(Lotto winningLotto) {
+        while (true) {
+            try {
+                return new BonusNumber(inputView.inputNumber(), winningLotto);
             } catch (InvalidNumberException | InvalidLottoException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
