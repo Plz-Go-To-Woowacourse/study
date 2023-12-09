@@ -18,7 +18,7 @@ public class BonusNumber {
     }
 
     private void validateDuplicateNumber(int number, Lotto winningLotto) {
-        if (winningLotto.isDuplicateNumberFromLotto(number)){
+        if (winningLotto.isNumberInLotto(number)){
             throw new InvalidLottoException(ErrorMessage.INVALID_BONUS_NUMBER.getText());
         }
     }
@@ -28,5 +28,9 @@ public class BonusNumber {
                 || number > Rule.END_LOTTO_NUMBER.getValue()) {
             throw new InvalidLottoException(ErrorMessage.INVALID_LOTTO_NUMBER.getText());
         }
+    }
+
+    public boolean isNumberInLotto(Lotto lotto) {
+        return lotto.isNumberInLotto(number);
     }
 }

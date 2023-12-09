@@ -3,6 +3,8 @@ package lotto.controller;
 import lotto.Exception.InvalidLottoException;
 import lotto.Exception.InvalidNumberException;
 import lotto.Exception.InvalidPriceException;
+import lotto.constants.lotto.BonusMatch;
+import lotto.constants.lotto.Rule;
 import lotto.service.LottoService;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
@@ -60,7 +62,7 @@ public class LottoMachine {
 
     private void showLottery(int lottoCount) {
         for (int index = 0; index < lottoCount; index++){
-            outputView.printLotto(lottoService.findLotto(index));
+            outputView.printLotto(lottoService.findLotto(index).toString());
         }
     }
 
@@ -81,6 +83,16 @@ public class LottoMachine {
             } catch (InvalidNumberException | InvalidLottoException exception) {
                 outputView.printErrorMessage(exception.getMessage());
             }
+        }
+    }
+
+    private void findRank(Lotto winningLotto, BonusNumber bonusNumber) {
+        for (int index = 0; index < Rule.LOTTO_NUMBER_COUNT.getValue(); index++) {
+            Lotto lotto = lottoService.findLotto(index);
+
+            int matchCount = lottoService.calcMatchCount(lotto, winningLotto);
+            boolean isBonusNumberMatched = lottoService.isBonusNumberMatched(lotto, bonusNumber);
+
         }
     }
 }

@@ -1,17 +1,22 @@
 package lotto.service;
 
+import lotto.constants.lotto.Rank;
 import lotto.constants.lotto.Rule;
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.Receipt;
 import lotto.utils.RandomNumberGenerator;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoService {
     private final List<Lotto> lottery;
+    private final Map<Rank, Integer> winning;
 
-    public LottoService(List<Lotto> lottery) {
+    public LottoService(List<Lotto> lottery, Map<Rank, Integer> winning) {
         this.lottery = lottery;
+        this.winning = winning;
     }
 
     public int calcPurchaseCount(Receipt receipt) {
@@ -30,7 +35,30 @@ public class LottoService {
         lottery.add(lotto);
     }
 
-    public String findLotto(int index) {
-        return lottery.get(index).toString();
+    public Lotto findLotto(int index) {
+        return lottery.get(index);
+    }
+
+//    public void findLottoRank(Lotto lotto, Lotto winningLotto) {
+//        int matchCount = calcMatchCount(lotto, winningLotto);
+//        BonusMatch bonusMatch = BonusMatch.NOT_RELEVANT;
+//
+//        if (matchCount == 5) {
+//            bonusMatch = checkBonusMatch(lotto, );
+//        }
+//    }
+//
+////    public BonusMatch checkBonusMatch(int matchCount, boolean isBonusNumberMatched, Lotto lotto) {
+////        if (matchCount == 5 && ) {
+////
+////        }
+////    }
+
+    public int calcMatchCount(Lotto lotto, Lotto winningLotto) {
+        return lotto.calcMatchCount(winningLotto);
+    }
+
+    public boolean isBonusNumberMatched(Lotto lotto, BonusNumber bonusNumber) {
+        return bonusNumber.isNumberInLotto(lotto);
     }
 }

@@ -49,9 +49,15 @@ public class Lotto {
         }
     }
 
-    public boolean isDuplicateNumberFromLotto(int lottoNumber) {
+    public boolean isNumberInLotto(int lottoNumber) {
         return numbers.stream()
                 .anyMatch(number -> number == lottoNumber);
+    }
+
+    public int calcMatchCount(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter(lotto::isNumberInLotto)
+                .count();
     }
 
     @Override
